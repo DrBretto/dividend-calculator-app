@@ -8,6 +8,7 @@ export default class DetailsWindow extends React.Component {
           <aside className="light window summary unselected">
         <h2 className="dark">Summary</h2>
 
+
         <div className="light window">
           <p>MSFT</p>
           <p>10 Shares @ $213.02</p>
