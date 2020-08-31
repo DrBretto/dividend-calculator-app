@@ -313,6 +313,10 @@ p {
 border-radius: 5px;
 }
 
+ul {
+  list-style-type: none;
+}
+
 @media screen and (max-width: 600px) {
   .grid {
     height: 100%;

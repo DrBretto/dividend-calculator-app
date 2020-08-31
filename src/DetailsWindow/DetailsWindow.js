@@ -2,7 +2,6 @@ import React from "react";
 import SummaryPanel from "./SummaryPanel";
 import Insight from "./Insight";
 
-
 export default class DetailsWindow extends React.Component {
   render() {
     return (
@@ -11,7 +10,8 @@ export default class DetailsWindow extends React.Component {
 
         <SummaryPanel></SummaryPanel>
 
-<Insight type="EPS"></Insight>
+        <Insight type="EPS"></Insight>
+
         <div className="green window">
           <h4>EPS 1-yr: 5.76</h4>
           <p>Description with more information when clicked</p>
