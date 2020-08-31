@@ -11,24 +11,24 @@ export default class MainWindow extends React.Component {
       <div className="light window strategies main">
         <h1>Strategies</h1>
 
-        <Accordion>
+        <Accordion color="yellow window strategy">
           <Strategy label="Strategy 1">
-            <Stock label="MSFT - 10 shares"></Stock>
-            <Stock label="MSFT - 20 shares"></Stock>
-            <Stock label="MSFT - 30 shares"></Stock>
-            <Stock label="MSFT - 40 shares"></Stock>
-            <AddStock label="testing"></AddStock>
+            <Accordion color="blue window stock">
+              <Stock label="MSFT - 10 shares"></Stock>
+              <Stock label="MSFT - 20 shares"></Stock>
+              <Stock label="MSFT - 30 shares"></Stock>
+              <Stock label="MSFT - 40 shares"></Stock>
+              <AddStock label="testing"></AddStock>
+            </Accordion>
           </Strategy>
 
-          <Strategy label="Alligator Sinensis">
-            <Accordion>
-            <Stock label="MSFT - 10 shares"></Stock>
+          <Strategy label="Strategy 2">
+            <Stock label="MSFT - 10 shares" color="blue window"></Stock>
             <Stock label="MSFT - 20 shares"></Stock>
             <Stock label="MSFT - 30 shares"></Stock>
             <Stock label="MSFT - 40 shares"></Stock>
             <Stock label="Add Stock"></Stock>
             <AddStock></AddStock>
-            </Accordion>
           </Strategy>
         </Accordion>
       </div>

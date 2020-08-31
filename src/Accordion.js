@@ -34,13 +34,14 @@ class Accordion extends Component {
     } = this;
 
     return (
-      <ul className="light window main" >
+      <ul >
         {children.map((child, index) => (
           <AccordionSection
             key={index}
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             onClick={onClick}
+            color={this.props.color}
           >
             {child.props.children}
           </AccordionSection>
