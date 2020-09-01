@@ -20,7 +20,7 @@ class AccordionSection extends Component {
     } = this;
 
     return (
-      <div className="red">
+      <div>
         <div className={this.props.color} onClick={onClick} style={{ cursor: "pointer" }}>
           {label}
           <div style={{ float: "right" }}>

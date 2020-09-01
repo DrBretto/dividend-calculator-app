@@ -2,12 +2,10 @@ import React from "react";
 
 export default class Strategy extends React.Component {
   render() {
-
-
     return (
-      <ul >
+      <li className="yellow window">
         <h3>{this.props.label}</h3>
-      </ul>
+      </li>
     );
   }
 }

@@ -20,32 +20,34 @@ export default class MainWindow extends React.Component {
       <div className="light window strategies main">
         <h1>Strategies</h1>
 
-        <Accordion color="yellow window strategy">
+        <Accordion color="yellow window">
+          {strategies.map((strategy) => (
+            <Strategy key={strategy.id} label={strategy.title}>
+              <Accordion color="blue window">
+                {stocks.map((stock) => (
+                  <Stock key={stock.id} label={stock.ticker}>
+                    <AddStock></AddStock>
+                  </Stock>
+                ))}
+              </Accordion>
+            </Strategy>
+          ))}
+        </Accordion>
+
+        {/* <Accordion color="yellow window strategy">
           <Strategy label="Strategy 1">
             <Accordion color="blue window">
-              <Stock label="MSFT - 10 shares">
-                <AddStock label="testing"></AddStock>
-              </Stock>
-              <Stock label="MSFT - 20 shares">
-                <AddStock label="testing"></AddStock>
-              </Stock>
-              <Stock label="MSFT - 30 shares">
-                <AddStock label="testing"></AddStock>
-              </Stock>
-              <Stock label="MSFT - 40 shares">
-                <AddStock label="testing"></AddStock>
-              </Stock>
+              <AddStock label="testing"></AddStock>
             </Accordion>
           </Strategy>
 
           <Strategy label="Strategy 2">
             <Accordion>
-              <Stock label={stocks.ticker} key={stocks.id}></Stock>
               <Stock label="Add Stock"></Stock>
               <AddStock></AddStock>
             </Accordion>
           </Strategy>
-        </Accordion>
+        </Accordion> */}
       </div>
     );
   }

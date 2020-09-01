@@ -27,13 +27,13 @@ export default class App extends Component {
 
         return Promise.all([stockRes.json(), strategyRes.json()]);
       })
-      .then(([stock, strategy]) => {
+      .then(([stocks, strategies]) => {
         console.log(
           "App -> componentDidMount -> stock, strategy",
-          stock,
-          strategy
+          stocks,
+          strategies
         );
-        this.setState({ stock, strategy });
+        this.setState({ stocks, strategies });
       })
       .catch((error) => {
         console.error({ error });

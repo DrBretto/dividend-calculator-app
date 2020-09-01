@@ -319,6 +319,10 @@ ul {
   margin: 0;
 }
 
+li{
+  list-style-type: none;
+}
+
 .stock {
   border: 2px solid purple;
 }
