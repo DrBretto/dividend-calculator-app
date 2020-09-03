@@ -6,6 +6,8 @@ import MainWindow from "../MainWindow/MainWindow";
 import DetailsWindow from "../DetailsWindow/DetailsWindow";
 import ApiContext from "../ApiContext";
 import config from "../config";
+import { Route, Switch, Link } from "react-router-dom";
+//import NotFoundPage from "./NotFoundPage";
 
 import "./App.css";
 
@@ -13,6 +15,12 @@ export default class App extends Component {
   state = {
     stocks: [],
     strategies: [],
+  };
+
+  handleAddFolder = (strategy) => {
+    this.setState({
+      strategies: [...this.state.strategies, strategy],
+    });
   };
 
   componentDidMount() {
@@ -53,14 +61,20 @@ export default class App extends Component {
   };
 
   handleDeleteStock = (stockId) => {
-    console.log("App -> handleDeleteStock -> this.state.stocks", this.state.stocks)
+    console.log(
+      "App -> handleDeleteStock -> this.state.stocks",
+      this.state.stocks
+    );
     this.setState({
       stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
   };
 
   handleDeleteStrategy = (stockId) => {
-    console.log("App -> handleDeleteStock -> this.state.stocks", this.state.stocks)
+    console.log(
+      "App -> handleDeleteStock -> this.state.stocks",
+      this.state.stocks
+    );
     this.setState({
       stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
@@ -79,11 +93,13 @@ export default class App extends Component {
     return (
       <ApiContext.Provider value={value}>
         <main className="App">
+
           <Header></Header>
           <div className="grid">
-            <NavWindow></NavWindow>
-            <MainWindow></MainWindow>
-            <DetailsWindow></DetailsWindow>
+            <Route exact path="/" component={NavWindow} />
+            <Route exact path="/" component={MainWindow} />
+            <Route exact path="/" component={DetailsWindow} />
+
             <Footer></Footer>
             <div></div>
           </div>

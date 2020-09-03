@@ -29,9 +29,9 @@ class AccordionSection extends Component {
           </div>
         </div>
         {isOpen && (
-          <ul>
+          <li>
             {this.props.children}
-          </ul>
+          </li>
         )}
       </div>
     );
