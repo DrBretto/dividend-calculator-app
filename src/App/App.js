@@ -6,8 +6,9 @@ import MainWindow from "../MainWindow/MainWindow";
 import DetailsWindow from "../DetailsWindow/DetailsWindow";
 import ApiContext from "../ApiContext";
 import config from "../config";
-import { Route } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import NotFoundPage from "../NotFoundPage";
+
 
 import "./App.css";
 
@@ -93,15 +94,14 @@ export default class App extends Component {
     return (
       <ApiContext.Provider value={value}>
         <main className="App">
-
           <Header></Header>
           <div className="grid">
             <Route exact path="/" component={NavWindow} />
             <Route exact path="/" component={MainWindow} />
             <Route exact path="/" component={DetailsWindow} />
-            <Route
-              component={NotFoundPage}
-            />
+
+            {/* <Route component={NotFoundPage} /> */}
+
             <Footer></Footer>
             <div></div>
           </div>
