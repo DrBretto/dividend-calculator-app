@@ -21,18 +21,18 @@ class AccordionSection extends Component {
 
     return (
       <div>
-        <div className={this.props.color} onClick={onClick} style={{ cursor: "pointer" }}>
+        <div
+          className={this.props.color}
+          onClick={onClick}
+          style={{ cursor: "pointer" }}
+        >
           {label}
           <div style={{ float: "right" }}>
             {!isOpen && <span>&#9650;</span>}
             {isOpen && <span>&#9660;</span>}
           </div>
         </div>
-        {isOpen && (
-          <li>
-            {this.props.children}
-          </li>
-        )}
+        {isOpen && <li>{this.props.children}</li>}
       </div>
     );
   }

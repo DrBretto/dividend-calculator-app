@@ -6,8 +6,8 @@ import MainWindow from "../MainWindow/MainWindow";
 import DetailsWindow from "../DetailsWindow/DetailsWindow";
 import ApiContext from "../ApiContext";
 import config from "../config";
-import { Route, Switch, Link } from "react-router-dom";
-//import NotFoundPage from "./NotFoundPage";
+import { Route } from "react-router-dom";
+import NotFoundPage from "../NotFoundPage";
 
 import "./App.css";
 
@@ -99,7 +99,9 @@ export default class App extends Component {
             <Route exact path="/" component={NavWindow} />
             <Route exact path="/" component={MainWindow} />
             <Route exact path="/" component={DetailsWindow} />
-
+            <Route
+              component={NotFoundPage}
+            />
             <Footer></Footer>
             <div></div>
           </div>
