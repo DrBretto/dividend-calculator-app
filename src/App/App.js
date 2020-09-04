@@ -9,6 +9,8 @@ import config from "../config";
 import { Route, Switch, Link } from "react-router-dom";
 import NotFoundPage from "../NotFoundPage";
 import LoginPage from "../NavWindow/LoginPage";
+import TokenService from "../services/token-service"
+import RegistrationPage from "../NavWindow/RegistrationPage";
 
 import "./App.css";
 
@@ -26,8 +28,16 @@ export default class App extends Component {
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/stock`),
-      fetch(`${config.API_ENDPOINT}/strategy`),
+      fetch(`${config.API_ENDPOINT}/stock`, {
+        headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
+        },
+      }),
+      fetch(`${config.API_ENDPOINT}/strategy`, {
+        headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
+        },
+      }),
     ])
       .then(([stockRes, strategyRes]) => {
         if (!stockRes.ok) return stockRes.json().then((e) => Promise.reject(e));
@@ -98,6 +108,7 @@ export default class App extends Component {
           <div className="grid">
             <Route exact path="/" component={NavWindow} />
             <Route path={"/login"} component={LoginPage} />
+            <Route path={"/register"} component={RegistrationPage} />
             <Route exact path="/" component={MainWindow} />
             <Route exact path="/" component={DetailsWindow} />
 

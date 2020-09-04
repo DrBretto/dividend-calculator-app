@@ -1,8 +1,8 @@
-import TokenService from '../services/token-service'
+import TokenService from './token-service'
 import config from '../config'
-const ArticleApiService = {
-  getArticles() {
-    return fetch(`${config.API_ENDPOINT}/articles`, {
+const StrategyApiService = {
+  getStrategies() {
+    return fetch(`${config.API_ENDPOINT}/strategies`, {
       headers: {
       },
     })
@@ -12,20 +12,8 @@ const ArticleApiService = {
           : res.json()
       )
   },
-  getArticle(articleId) {
-    return fetch(`${config.API_ENDPOINT}/articles/${articleId}`, {
-      headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
-  },
-  getArticleComments(articleId) {
-    return fetch(`${config.API_ENDPOINT}/articles/${articleId}/comments`, {
+  getStrategy(strategyId) {
+    return fetch(`${config.API_ENDPOINT}/strategies/${strategyId}`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
@@ -36,7 +24,19 @@ const ArticleApiService = {
           : res.json()
       )
   },
-  postComment(articleId, text) {
+  getStrategyComments(strategyId) {
+    return fetch(`${config.API_ENDPOINT}/strategies/${strategyId}/comments`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+  postComment(strategyId, text) {
     return fetch(`${config.API_ENDPOINT}/comments`, {
       method: 'POST',
       headers: {
@@ -45,7 +45,7 @@ const ArticleApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        article_id: articleId,
+        strategy_id: strategyId,
         text,
       }),
     })
@@ -56,4 +56,4 @@ const ArticleApiService = {
       )
   }
 }
-export default ArticleApiService
+export default StrategyApiService

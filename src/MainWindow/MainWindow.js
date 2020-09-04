@@ -9,16 +9,12 @@ import AddStrategy from "./AddStrategy";
 export default class MainWindow extends React.Component {
   static contextType = ApiContext;
 
-
-
-
   render() {
     const { stocks, strategies } = this.context;
 
     return (
       <div className="light window strategies main">
         <h1>Strategies</h1>
-
         <Accordion color="yellow window">
           {strategies.map((strategy) => (
             <Strategy key={strategy.id} label={strategy.title}>
@@ -36,7 +32,6 @@ export default class MainWindow extends React.Component {
             </Strategy>
           ))}
         </Accordion>
-
         <AddStrategy label="add new strategy"></AddStrategy>
       </div>
     );
