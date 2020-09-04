@@ -8,7 +8,7 @@ import ApiContext from "../ApiContext";
 import config from "../config";
 import { Route, Switch, Link } from "react-router-dom";
 import NotFoundPage from "../NotFoundPage";
-
+import LoginPage from "../NavWindow/LoginPage";
 
 import "./App.css";
 
@@ -97,6 +97,7 @@ export default class App extends Component {
           <Header></Header>
           <div className="grid">
             <Route exact path="/" component={NavWindow} />
+            <Route path={"/login"} component={LoginPage} />
             <Route exact path="/" component={MainWindow} />
             <Route exact path="/" component={DetailsWindow} />
 
