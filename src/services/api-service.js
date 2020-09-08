@@ -1,8 +1,8 @@
 import TokenService from './token-service'
 import config from '../config'
-const StrategyApiService = {
-  getStrategies() {
-    return fetch(`${config.API_ENDPOINT}/strategy`, {
+const ApiService = {
+  getStrategies(user_id) {
+    return fetch(`${config.API_ENDPOINT}/strategy/${user_id}`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
@@ -13,6 +13,7 @@ const StrategyApiService = {
           : res.json()
       )
   },
+  
   getStrategy(strategyId) {
     return fetch(`${config.API_ENDPOINT}/strategy/${strategyId}`, {
       headers: {
@@ -26,7 +27,7 @@ const StrategyApiService = {
       )
   },
 
-  postComment(strategyId, text) {
+  postStrategy(strategyId, text) {
     return fetch(`${config.API_ENDPOINT}/strategy`, {
       method: 'POST',
       headers: {
@@ -45,4 +46,4 @@ const StrategyApiService = {
       )
   }
 }
-export default StrategyApiService
+export default ApiService

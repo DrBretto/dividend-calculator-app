@@ -26,7 +26,7 @@ export default class AddStock extends Component {
     fetch(`${config.API_ENDPOINT}/stock`, {
       method: "POST",
       headers: {
-        "Authorization": `basic ${TokenService.getAuthToken()}`,
+        "Authorization": `bearer ${TokenService.getAuthToken()}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(stock),

@@ -21,7 +21,7 @@ export default class AddStrategy extends Component {
     fetch(`${config.API_ENDPOINT}/strategy`, {
       method: "POST",
       headers: {
-        "Authorization": `basic ${TokenService.getAuthToken()}`,
+        "Authorization": `bearer ${TokenService.getAuthToken()}`,
         "content-type": "application/json",
       },
       body: JSON.stringify(strategy),

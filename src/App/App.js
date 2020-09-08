@@ -9,8 +9,9 @@ import config from "../config";
 import { Route, Switch, Link } from "react-router-dom";
 import NotFoundPage from "../NotFoundPage";
 import LoginPage from "../NavWindow/LoginPage";
-import TokenService from "../services/token-service"
+import TokenService from "../services/token-service";
 import RegistrationPage from "../NavWindow/RegistrationPage";
+import ApiService from "../services/api-service";
 
 import "./App.css";
 
@@ -27,36 +28,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/stock`, {
-        headers: {
-          'authorization': `bearer ${TokenService.getAuthToken()}`,
-        },
-      }),
-      fetch(`${config.API_ENDPOINT}/strategy`, {
-        headers: {
-          'authorization': `bearer ${TokenService.getAuthToken()}`,
-        },
-      }),
-    ])
-      .then(([stockRes, strategyRes]) => {
-        if (!stockRes.ok) return stockRes.json().then((e) => Promise.reject(e));
-        if (!strategyRes.ok)
-          return strategyRes.json().then((e) => Promise.reject(e));
-
-        return Promise.all([stockRes.json(), strategyRes.json()]);
-      })
-      .then(([stocks, strategies]) => {
-        console.log(
-          "App -> componentDidMount -> stock, strategy",
-          stocks,
-          strategies
-        );
-        this.setState({ stocks, strategies });
-      })
-      .catch((error) => {
-        console.error({ error });
-      });
+    ApiService.getStrategies();
   }
 
   handleAddStrategy = (strategy) => {
@@ -123,4 +95,34 @@ export default class App extends Component {
   }
 }
 
-//https://dividend-calculator-api.herokuapp.com/  <-- api
+
+ //   Promise.all([
+    // fetch(`${config.API_ENDPOINT}/stock`, {
+    //   headers: {
+    //     "authorization": `bearer ${TokenService.getAuthToken()}`,
+    //   },
+    // }),
+    // fetch(`${config.API_ENDPOINT}/strategy`, {
+    //   headers: {
+    //     "authorization": `bearer ${TokenService.getAuthToken()}`,
+    //   },
+    // }),
+    //   ])
+    //     .then(([stockRes, strategyRes]) => {
+    //       if (!stockRes.ok) return stockRes.json().then((e) => Promise.reject(e));
+    //       if (!strategyRes.ok)
+    //         return strategyRes.json().then((e) => Promise.reject(e));
+
+    //       return Promise.all([stockRes.json(), strategyRes.json()]);
+    //     })
+    //     .then(([stocks, strategies]) => {
+    //       console.log(
+    //         "App -> componentDidMount -> stocks, strategies",
+    //         stocks,
+    //         strategies
+    //       );
+    //       this.setState({ stocks, strategies });
+    //     })
+    //     .catch((error) => {
+    //       console.error({ error });
+    //     });
