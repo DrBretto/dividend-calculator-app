@@ -6,14 +6,27 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  background: rgb(2, 18, 44);
+  background: rgb(255, 255, 255);
+
+
+  /*blue skies*/
   background: linear-gradient(
+    167deg,
+    rgba(204, 204, 127, 10.764) 0%,
+    rgba(2, 2, 154, 10.764) 23.6%,
+    rgba(17, 17, 188, 10.764) 76.4%,
+    rgba(10, 100, 224, 10.764) 100%
+  );
+
+
+  /*dark*/
+  /* background: linear-gradient(
     167deg,
     rgba(0, 9, 24, 1) 0%,
     rgba(2, 18, 44, 1) 23.6%,
     rgba(17, 18, 54, 1) 76.4%,
     rgba(4, 27, 74, 1) 100%
-  );
+  ); */
 }
 
 ::-webkit-scrollbar {
@@ -319,12 +332,17 @@ ul {
   margin: 0;
 }
 
-li{
+li {
   list-style-type: none;
 }
 
 .stock {
   border: 2px solid purple;
+}
+
+.App {
+  margin: 0;
+  padding: 0;
 }
 
 @media screen and (max-width: 600px) {
