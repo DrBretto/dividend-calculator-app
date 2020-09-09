@@ -16,57 +16,60 @@ import ApiService from "../services/api-service";
 import "./App.css";
 
 export default class App extends Component {
-  state = {
-    stocks: [],
-    strategies: [],
-  };
+  static contextType = ApiContext;
 
   handleAddFolder = (strategy) => {
     this.setState({
-      strategies: [...this.state.strategies, strategy],
+      strategies: [...this.context.strategies, strategy],
     });
   };
 
   componentDidMount() {
-    ApiService.getStrategies();
+    
+    ApiService.getStrategies()
+      .then(this.context.setStrategy)
+      .catch(this.context.setError);
+    ApiService.getStocks()
+      .then(this.context.setStock)
+      .catch(this.context.setError);
   }
 
   handleAddStrategy = (strategy) => {
     this.setState({
-      strategies: [...this.state.strategies, strategy],
+      strategies: [...this.context.strategies, strategy],
     });
   };
 
   handleAddStock = (stock) => {
     this.setState({
-      stocks: [...this.state.stocks, stock],
+      stocks: [...this.context.stocks, stock],
     });
   };
 
   handleDeleteStock = (stockId) => {
     console.log(
-      "App -> handleDeleteStock -> this.state.stocks",
-      this.state.stocks
+      "App -> handleDeleteStock -> this.context.stocks",
+      this.context.stocks
     );
     this.setState({
-      stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
+      stocks: this.context.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
   };
 
   handleDeleteStrategy = (stockId) => {
     console.log(
-      "App -> handleDeleteStock -> this.state.stocks",
-      this.state.stocks
+      "App -> handleDeleteStock -> this.context.stocks",
+      this.context.stocks
     );
     this.setState({
-      stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
+      stocks: this.context.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
   };
 
   render() {
     const value = {
-      stocks: this.state.stocks,
-      strategies: this.state.strategies,
+      stocks: this.context.stocks,
+      strategies: this.context.strategies,
       addStrategy: this.handleAddStrategy,
       addStock: this.handleAddStock,
       deleteStock: this.handleDeleteStock,
@@ -94,35 +97,3 @@ export default class App extends Component {
     );
   }
 }
-
-
- //   Promise.all([
-    // fetch(`${config.API_ENDPOINT}/stock`, {
-    //   headers: {
-    //     "authorization": `bearer ${TokenService.getAuthToken()}`,
-    //   },
-    // }),
-    // fetch(`${config.API_ENDPOINT}/strategy`, {
-    //   headers: {
-    //     "authorization": `bearer ${TokenService.getAuthToken()}`,
-    //   },
-    // }),
-    //   ])
-    //     .then(([stockRes, strategyRes]) => {
-    //       if (!stockRes.ok) return stockRes.json().then((e) => Promise.reject(e));
-    //       if (!strategyRes.ok)
-    //         return strategyRes.json().then((e) => Promise.reject(e));
-
-    //       return Promise.all([stockRes.json(), strategyRes.json()]);
-    //     })
-    //     .then(([stocks, strategies]) => {
-    //       console.log(
-    //         "App -> componentDidMount -> stocks, strategies",
-    //         stocks,
-    //         strategies
-    //       );
-    //       this.setState({ stocks, strategies });
-    //     })
-    //     .catch((error) => {
-    //       console.error({ error });
-    //     });

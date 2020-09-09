@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ApiContext from "../ApiContext";
 import config from "../config";
 import Form from "./Form";
-import TokenService from "../Utilities/token-service";
+import TokenService from "../services/token-service";
 
 export default class AddStrategy extends Component {
   static defaultProps = {

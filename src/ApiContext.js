@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { Component } from 'react'
 
 export default React.createContext({
   stocks: [],
@@ -8,3 +9,20 @@ export default React.createContext({
   deleteStock: () => {},
   deleteStrategy: () => {},
 });
+
+export class ArticleProvider extends Component {
+setError = error => {
+  console.error(error)
+  this.setState({ error })
+}
+
+setStrategies = strategies => {
+  this.setState({ strategies })
+}
+
+setStocks = stocks => {
+  this.setState({ stocks })
+}
+
+
+}
