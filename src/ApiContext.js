@@ -1,28 +1,97 @@
+import React, { Component } from "react";
 
-import React, { Component } from 'react'
-
-export default React.createContext({
+const ApiContext = React.createContext({
   stocks: [],
   strategies: [],
-  addStrategy: () => {},
-  addStock: () => {},
-  deleteStock: () => {},
-  deleteStrategy: () => {},
+  setError: () => {},
+  clearError: () => {},
+  setStrategies: () => {},
+  setStocks: () => {},
 });
 
-export class ArticleProvider extends Component {
-setError = error => {
-  console.error(error)
-  this.setState({ error })
-}
+export default ApiContext;
 
-setStrategies = strategies => {
-  this.setState({ strategies })
-}
+export class ApiProvider extends Component {
+  state = {
+    strategies: [],
+    stocks: [],
+    error: null,
+  };
 
-setStocks = stocks => {
-  this.setState({ stocks })
-}
+  setError = (error) => {
+    console.error(error);
+    this.setState({ error });
+  };
 
+  clearError = () => {
+    this.setState({ error: null });
+  };
 
+  setStrategies = (strategies) => {
+    this.setState({ strategies });
+  };
+
+  setStocks = (stocks) => {
+    this.setState({ stocks });
+  };
+
+  handleAddFolder = (strategy) => {
+    this.setState({
+      strategies: [...this.context.strategies, strategy],
+    });
+  };
+
+  handleAddStrategy = (strategy) => {
+    this.setState({
+      strategies: [...this.context.strategies, strategy],
+    });
+  };
+
+  handleAddStock = (stock) => {
+    this.setState({
+      stocks: [...this.context.stocks, stock],
+    });
+  };
+
+  handleDeleteStock = (stockId) => {
+    console.log(
+      "App -> handleDeleteStock -> this.context.stocks",
+      this.context.stocks
+    );
+    this.setState({
+      stocks: this.context.stocks.filter(
+        (stock) => stock.stocks_id !== stockId
+      ),
+    });
+  };
+
+  handleDeleteStrategy = (stockId) => {
+    console.log(
+      "App -> handleDeleteStock -> this.context.stocks",
+      this.context.stocks
+    );
+    this.setState({
+      stocks: this.context.stocks.filter(
+        (stock) => stock.stocks_id !== stockId
+      ),
+    });
+  };
+
+  render() {
+    const value = {
+      stocks: this.state.stocks,
+      strategies: this.state.strategies,
+      setError: this.setError,
+      clearError: this.clearError,
+      setStrategies: this.setStrategies,
+      setStocks: this.setStocks,
+    };
+    console.log("ApiProvider -> render -> value", value);
+
+    return (
+      <ApiContext.Provider value={value}>
+        {this.props.children}
+      </ApiContext.Provider>
+    );
+  }
 }

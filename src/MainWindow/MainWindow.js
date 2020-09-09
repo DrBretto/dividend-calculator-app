@@ -9,6 +9,16 @@ import AddStrategy from "./AddStrategy";
 export default class MainWindow extends React.Component {
   static contextType = ApiContext;
 
+  componentDidMount() {
+    ApiService.getStrategies()
+      .then(this.context.setStrategy)
+      .catch(this.context.setError);
+    ApiService.getStocks()
+      .then(this.context.setStock)
+      .catch(this.context.setError);
+  }
+
+
   render() {
     const { stocks, strategies } = this.context;
 
