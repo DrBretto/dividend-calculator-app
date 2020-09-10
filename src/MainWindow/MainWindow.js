@@ -24,8 +24,8 @@ export default class MainWindow extends React.Component {
     const { stocks, strategies } = this.context;
 
     return (
-      <div className="light window strategies main">
-        <h1>Strategies</h1>
+      <div className="light window main">
+        <h2 className="dark">Strategies</h2>
         <Accordion color="yellow window">
           {strategies.map((strategy) => (
             <Strategy key={strategy.id} label={strategy.title}>

@@ -4,7 +4,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <header>
-        <h1 className="dark">Dividend Calculator Wireframe</h1>
+        <h1 className="dark window">Dividend Calculator Wireframe</h1>
       </header>
     );
   }

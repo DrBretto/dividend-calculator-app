@@ -41,7 +41,7 @@ export default class AddStrategy extends Component {
   render() {
     return (
       <section className="AddStrategy">
-        <h2>Create a strategy</h2>
+        <h2 className="blue">Create a strategy</h2>
         <Form onSubmit={this.handleSubmit}>
           <div className="field">
             <label htmlFor="strategy-name-input">Name</label>
