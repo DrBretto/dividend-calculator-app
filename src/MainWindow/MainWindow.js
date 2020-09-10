@@ -40,7 +40,7 @@ export default class MainWindow extends React.Component {
                   .map((stock) => (
                   <Stock
                     key={stock.id}
-                    label={stock.ticker + " - " + stock.shares + " shares"}
+                    stock={stock}
                   ></Stock>
                 ))}
               {/* </Accordion> */}

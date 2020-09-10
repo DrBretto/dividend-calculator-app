@@ -1,4 +1,5 @@
 import React from "react";
+import { scryRenderedDOMComponentsWithClass } from "react-dom/test-utils";
 
 export default class Stock extends React.Component {
   constructor(props) {
@@ -16,10 +17,23 @@ export default class Stock extends React.Component {
   }
 
   render() {
+    const { ticker, shares, price, industry, eps1, eps5 } = this.props.stock;
+    const yld = this.props.stock.yield;
+
+    console.log("Stock -> render -> this.props.stock", this.props.stock);
     return (
       <div className="blue window">
-        <h3 onClick={this.toggleMenu}> {this.props.label}</h3>
-        {!this.state.isHidden && <div className="red window">testing</div>}
+        <h3 onClick={this.toggleMenu}> {ticker}</h3>
+        {!this.state.isHidden && (
+          <div className="dark window stockDetails">
+            <span className="blue window">Shares: {shares}</span>
+            <span className="dark window">Price: {price}</span>
+            <span className="white window">Industry: {industry}</span>
+            <span className="light window">Yield: {yld}</span>
+            <span className="green window">EPS 1yr:{eps1}</span>
+            <span className="red window">EPS 5yr:{eps5}</span>
+          </div>
+        )}
       </div>
     );
   }
