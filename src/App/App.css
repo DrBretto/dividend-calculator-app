@@ -1,13 +1,12 @@
 html {
   height: 100%;
   width: 100%;
- overflow: hidden;
+  overflow: hidden;
 
   background-repeat: no-repeat;
   background-attachment: fixed;
 
   background: rgb(255, 255, 255);
-
 
   /*blue skies*/
   background: linear-gradient(
@@ -18,7 +17,6 @@ html {
     rgba(10, 100, 224, 10.764) 100%
   );
 
-
   /*dark*/
   /* background: linear-gradient(
     167deg,
@@ -28,6 +26,11 @@ html {
     rgba(4, 27, 74, 1) 100%
   ); */
 }
+
+body {
+  margin:0;
+}
+
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -82,7 +85,7 @@ h1 {
   border: 2px solid black;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.38);
-  margin: 5px;
+  margin: 0px;
 
   text-align: center;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -341,10 +344,10 @@ li {
   border: 2px solid purple;
 }
 
-.App {
+/* .App {
   margin: 0;
   padding: 0;
-}
+} */
 
 @media screen and (max-width: 600px) {
   .grid {
@@ -363,9 +366,16 @@ li {
   main {
     grid-column: span 3;
     grid-row: span 3;
+    padding: 0px;
+    padding-right: 0px;
+    width: 100%;
+    /* width: calc(100vw-0px); */
   }
   .summary {
     grid-column: span 3;
     grid-row: span 2;
+  }
+  ::-webkit-scrollbar{
+    width: 0px;
   }
 }
