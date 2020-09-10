@@ -1,5 +1,4 @@
 import React from "react";
-import { scryRenderedDOMComponentsWithClass } from "react-dom/test-utils";
 
 export default class Stock extends React.Component {
   constructor(props) {

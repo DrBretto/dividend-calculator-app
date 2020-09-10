@@ -19,11 +19,6 @@ export default class AddStock extends Component {
     this.setState({ isHidden: !this.state.isHidden });
   }
 
-  // static defaultProps = {
-  //   history: {
-  //     push: () => {},
-  //   },
-  // };
   static contextType = ApiContext;
 
   handleSubmit = (e) => {
@@ -38,7 +33,7 @@ export default class AddStock extends Component {
       eps5: e.target["eps5"].value,
       strategy_id: String(this.props.strategy_id),
     };
-    console.log("AddStock -> handleSubmit -> strategy_id", stock)
+
     fetch(`${config.API_ENDPOINT}/stock`, {
       method: "POST",
       headers: {

@@ -21,6 +21,25 @@ const ApiService = {
     );
   },
 
+  addStock(stock, strategyId){
+
+      return fetch(`${config.API_ENDPOINT}/strategy`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "authorization": `bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify({
+          strategy_id: strategyId,
+          stock,
+        }),
+      }).then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      );
+    
+  
+  },
+
   getStrategy(strategyId) {
     return fetch(`${config.API_ENDPOINT}/strategy/${strategyId}`, {
       headers: {
