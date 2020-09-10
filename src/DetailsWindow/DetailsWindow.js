@@ -16,13 +16,13 @@ export default class DetailsWindow extends React.Component {
           <h4>EPS 1-yr: 5.76</h4>
           <p>Description with more information when clicked</p>
         </div>
-        <div className="green window">
+        <div className="red window">
           <h4>EPS 5-yr: 0.15</h4>
         </div>
-        <div className="light window">
+        <div className="purple window">
           <h4>PE: 36.98</h4>
         </div>
-        <div className="red window">
+        <div className="yellow window">
           <h4>Time to Recoup: 75mo</h4>
         </div>
       </aside>
