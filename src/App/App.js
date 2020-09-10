@@ -18,11 +18,11 @@ export default class App extends Component {
       <main className="App">
         <Header></Header>
         <div className="grid">
-          <Route exact path="/" component={NavWindow} />
+          <Route path="/" component={NavWindow} />
           <Route path={"/login"} component={LoginPage} />
           <Route path={"/register"} component={RegistrationPage} />
-          <Route exact path="/" component={MainWindow} />
-          <Route exact path="/" component={DetailsWindow} />
+          <Route path="/" component={MainWindow} />
+          <Route path="/" component={DetailsWindow} />
           {/* <Route component={NotFoundPage} /> */}
           <Footer></Footer>
           <div></div>

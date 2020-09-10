@@ -6,17 +6,23 @@ import Strategy from "./Strategy";
 import ApiContext from "../ApiContext";
 import AddStrategy from "./AddStrategy";
 
-import ApiService from "../services/api-service"
+import ApiService from "../services/api-service";
 
 export default class MainWindow extends React.Component {
   static contextType = ApiContext;
 
   componentDidMount() {
     ApiService.getStrategies()
-      .then(this.context.setStrategy)
+      .then((res) => {
+        console.log("MainWindow -> componentDidMount -> res", res);
+        this.context.setStrategies(res);
+      })
       .catch(this.context.setError);
     ApiService.getStocks()
-      .then(this.context.setStock)
+      .then((res) => {
+        console.log("MainWindow -> componentDidMount -> res", res);
+        this.context.setStocks(res);
+      })
       .catch(this.context.setError);
   }
 
@@ -29,15 +35,16 @@ export default class MainWindow extends React.Component {
         <Accordion color="yellow window">
           {strategies.map((strategy) => (
             <Strategy key={strategy.id} label={strategy.title}>
-              <Accordion color="blue window">
-                {stocks.map((stock) => (
-                    <Stock
-                      key={stock.id}
-                      label={stock.ticker + " - " + stock.shares + " shares"}
-                    ></Stock>
-                  ))}
-              </Accordion>
-              <AddStock></AddStock>
+              {/* <Accordion color="gray window"> */}
+                {stocks.filter((stock) => stock.strategy_id === strategy.id)
+                  .map((stock) => (
+                  <Stock
+                    key={stock.id}
+                    label={stock.ticker + " - " + stock.shares + " shares"}
+                  ></Stock>
+                ))}
+              {/* </Accordion> */}
+              <AddStock strategy_id={strategy.id}></AddStock>
             </Strategy>
           ))}
         </Accordion>

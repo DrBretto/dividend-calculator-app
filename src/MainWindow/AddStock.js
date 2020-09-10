@@ -5,11 +5,25 @@ import Form from "./Form";
 import TokenService from "../services/token-service";
 
 export default class AddStock extends Component {
-  static defaultProps = {
-    history: {
-      push: () => {},
-    },
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isHidden: true,
+    };
+
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  toggleMenu() {
+    this.setState({ isHidden: !this.state.isHidden });
+  }
+
+  // static defaultProps = {
+  //   history: {
+  //     push: () => {},
+  //   },
+  // };
   static contextType = ApiContext;
 
   handleSubmit = (e) => {
@@ -22,7 +36,9 @@ export default class AddStock extends Component {
       yield: e.target["yield"].value,
       eps1: e.target["eps1"].value,
       eps5: e.target["eps5"].value,
+      strategy_id: String(this.props.strategy_id),
     };
+    console.log("AddStock -> handleSubmit -> strategy_id", stock)
     fetch(`${config.API_ENDPOINT}/stock`, {
       method: "POST",
       headers: {
@@ -46,43 +62,44 @@ export default class AddStock extends Component {
   render() {
     return (
       <section className="AddStock">
-        <h2>Create a stock</h2>
-
-        <Form onSubmit={this.handleSubmit} className="open window light">
-          <label htmlFor="ticker">Stock Ticker:</label>
-          <input type="text" id="ticker" name="ticker" />
-          <br />
-          <br />
-          <label htmlFor="industry">Industry:</label>
-          <input type="text" id="industry" name="industry" />
-          <br />
-          <br />
-          <label htmlFor="shares">Shares:</label>
-          <input type="text" id="shares" name="shares" />
-          <br />
-          <br />
-          <label htmlFor="price">Target price:</label>
-          <input type="text" id="price" name="price" />
-          <br />
-          <br />
-          <label htmlFor="yield">Dividend Yield:</label>
-          <input type="text" id="yield" name="yield" />
-          <br />
-          <br />
-          <label htmlFor="eps1">EPS 1yr:</label>
-          <input type="text" id="eps1" name="eps1" />
-          <br />
-          <br />
-          <label htmlFor="eps5">EPS 5yr:</label>
-          <input type="text" id="eps5" name="eps5" />
-          <br />
-          <br />
-          <button>Cancel</button>
-          <button>Add Stock</button>
-          <div className="buttons">
-            <button type="submit">Add stock</button>
-          </div>
-        </Form>
+        <h2 onClick={this.toggleMenu}>Create a stock</h2>
+        {!this.state.isHidden && (
+          <Form onSubmit={this.handleSubmit} className="open window light">
+            <label htmlFor="ticker">Stock Ticker:</label>
+            <input type="text" id="ticker" name="ticker" />
+            <br />
+            <br />
+            <label htmlFor="industry">Industry:</label>
+            <input type="text" id="industry" name="industry" />
+            <br />
+            <br />
+            <label htmlFor="shares">Shares:</label>
+            <input type="text" id="shares" name="shares" />
+            <br />
+            <br />
+            <label htmlFor="price">Target price:</label>
+            <input type="text" id="price" name="price" />
+            <br />
+            <br />
+            <label htmlFor="yield">Dividend Yield:</label>
+            <input type="text" id="yield" name="yield" />
+            <br />
+            <br />
+            <label htmlFor="eps1">EPS 1yr:</label>
+            <input type="text" id="eps1" name="eps1" />
+            <br />
+            <br />
+            <label htmlFor="eps5">EPS 5yr:</label>
+            <input type="text" id="eps5" name="eps5" />
+            <br />
+            <br />
+            <button>Cancel</button>
+            <button>Add Stock</button>
+            <div className="buttons">
+              <button type="submit">Add stock</button>
+            </div>
+          </Form>
+        )}
       </section>
     );
   }

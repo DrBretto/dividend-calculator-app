@@ -6,7 +6,11 @@ const ApiContext = React.createContext({
   setError: () => {},
   clearError: () => {},
   setStrategies: () => {},
+  clearStrategies: () => {},
   setStocks: () => {},
+  clearStocks: () => {},
+  addStrategy: () => {},
+  addStock: () => {},
 });
 
 export default ApiContext;
@@ -30,36 +34,40 @@ export class ApiProvider extends Component {
   setStrategies = (strategies) => {
     this.setState({ strategies });
   };
+  
+  clearStrategies = () => {
+    this.setState({ strategies: [] });
+  };
 
   setStocks = (stocks) => {
     this.setState({ stocks });
   };
 
-  handleAddFolder = (strategy) => {
-    this.setState({
-      strategies: [...this.context.strategies, strategy],
-    });
+  clearStocks = () => {
+    this.setState({ stocks: [] });
   };
 
   handleAddStrategy = (strategy) => {
+    console.log("ApiProvider -> handleAddStrategy -> strategy", strategy)
+    console.log("ApiProvider -> handleAddStrategy -> this.context.strategies", this.state.strategies)
     this.setState({
-      strategies: [...this.context.strategies, strategy],
+      strategies: [...this.state.strategies, strategy],
     });
   };
 
   handleAddStock = (stock) => {
     this.setState({
-      stocks: [...this.context.stocks, stock],
+      stocks: [...this.state.stocks, stock],
     });
   };
 
   handleDeleteStock = (stockId) => {
     console.log(
-      "App -> handleDeleteStock -> this.context.stocks",
-      this.context.stocks
+      "App -> handleDeleteStock -> this.state.stocks",
+      this.state.stocks
     );
     this.setState({
-      stocks: this.context.stocks.filter(
+      stocks: this.state.stocks.filter(
         (stock) => stock.stocks_id !== stockId
       ),
     });
@@ -67,11 +75,11 @@ export class ApiProvider extends Component {
 
   handleDeleteStrategy = (stockId) => {
     console.log(
-      "App -> handleDeleteStock -> this.context.stocks",
-      this.context.stocks
+      "App -> handleDeleteStock -> this.state.stocks",
+      this.state.stocks
     );
     this.setState({
-      stocks: this.context.stocks.filter(
+      stocks: this.state.stocks.filter(
         (stock) => stock.stocks_id !== stockId
       ),
     });
@@ -85,6 +93,8 @@ export class ApiProvider extends Component {
       clearError: this.clearError,
       setStrategies: this.setStrategies,
       setStocks: this.setStocks,
+      addStrategy: this.handleAddStrategy,
+      addStock: this.handleAddStock,
     };
     console.log("ApiProvider -> render -> value", value);
 

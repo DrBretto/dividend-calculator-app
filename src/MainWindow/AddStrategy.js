@@ -16,7 +16,6 @@ export default class AddStrategy extends Component {
     e.preventDefault();
     const strategy = {
       title: e.target["strategy-name"].value,
-      stocks: [],
     };
     fetch(`${config.API_ENDPOINT}/strategy`, {
       method: "POST",

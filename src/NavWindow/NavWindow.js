@@ -6,9 +6,9 @@ import ProjectedEarnings from "./ProjectedEarnings";
 import IndustryGraph from "./IndustryGraph";
 import LoginForm from "./LoginForm";
 import LoginPage from "./LoginPage";
-import { Hyph } from "../Utilities/Utils";
 import TokenService from "../services/token-service";
 import { Section } from "../Utilities/Utils";
+import ApiContext from "../ApiContext"
 
 export default class NavWindow extends React.Component {
   static defaultProps = {
@@ -18,8 +18,15 @@ export default class NavWindow extends React.Component {
     },
   };
 
+  static contextType = ApiContext;
+
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
+    
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/";
+    history.push(destination);
+
   };
 
   renderLogoutLink() {
