@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import TokenService from "./services/token-service"
 
 const ApiContext = React.createContext({
   stocks: [],
   strategies: [],
   openStocks: [],
   openStrat: {},
+  loggedIn: TokenService.hasAuthToken(),
+  setLogin: () => {},
+  setLogout: () => {},
   setError: () => {},
   clearError: () => {},
   setStrategies: () => {},
@@ -22,8 +26,20 @@ export class ApiProvider extends Component {
   state = {
     strategies: [],
     stocks: [],
+    openStrat: {},
+    openStocks: [],
+    loggedIn: TokenService.hasAuthToken(),
     error: null,
   };
+
+  setLogin = (bool) =>{
+    this.setState({
+      loggedIn: bool
+    })
+    console.log("ApiProvider -> setLogin -> loggedIn", this.state.loggedIn)
+
+    
+  }
 
   setOpenStrat = (stratName) => {
     const strat = this.state.strategies.find(
@@ -32,7 +48,6 @@ export class ApiProvider extends Component {
     const stocks = this.state.stocks.filter(
       (stock) => stock.strategy_id === strat.id
     );
-    console.log("ApiProvider -> setOpenStrat -> stocks", stocks);
 
     this.setState({
       openStocks: stocks,
@@ -106,13 +121,18 @@ export class ApiProvider extends Component {
     const value = {
       stocks: this.state.stocks,
       strategies: this.state.strategies,
+      openStrat: this.state.openStrat,
+      loggedIn: this.state.loggedIn,
+      openStocks: this.state.openStocks,
+      setLogin: this.setLogin,
       setError: this.setError,
       clearError: this.clearError,
       setStrategies: this.setStrategies,
       setStocks: this.setStocks,
       addStrategy: this.handleAddStrategy,
       addStock: this.handleAddStock,
-      openStrat: this.setOpenStrat,
+      setOpenStrat: this.setOpenStrat
+
     };
     console.log("ApiProvider -> render -> value", value);
 

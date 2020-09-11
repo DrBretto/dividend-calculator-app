@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TokenService from "../services/token-service";
 import { Button, Input } from "../Utilities/Utils";
 import AuthApiService from "../services/auth-api-service";
+import ApiContext from "../ApiContext";
 
 export default class LoginForm extends Component {
   static defaultProps = {
@@ -10,11 +11,13 @@ export default class LoginForm extends Component {
 
   state = { error: null };
 
+  static contextType = ApiContext;
+
   handleSubmitJwtAuth = (ev) => {
     ev.preventDefault();
     this.setState({ error: null });
     const { user_name, password } = ev.target;
-    
+
     AuthApiService.postLogin({
       user_name: user_name.value,
       password: password.value,
@@ -23,6 +26,7 @@ export default class LoginForm extends Component {
         user_name.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
+        this.context.setLogin(true);
         this.props.onLoginSuccess();
       })
       .catch((res) => {

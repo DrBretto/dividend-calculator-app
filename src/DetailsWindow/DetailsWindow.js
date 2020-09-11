@@ -11,11 +11,11 @@ export default class DetailsWindow extends React.Component {
 
         <SummaryPanel></SummaryPanel>
 
-        <Insight type="EPS"></Insight>
         <PieChart></PieChart>
         <PieChart></PieChart>
         <PieChart></PieChart>
         
+        <Insight type="EPS"></Insight>
       </aside>
     );
   }

@@ -28,7 +28,6 @@ const data = [
 ];
 
 export default class Example extends PureComponent {
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
 
   render() {
     return (

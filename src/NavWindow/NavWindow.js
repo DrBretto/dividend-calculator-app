@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import UserWindow from "./UserWindow";
 import StrategyOverview from "./StrategyOverview";
 import ProjectedEarnings from "./ProjectedEarnings";
 import IndustryGraph from "./IndustryGraph";
 import LoginForm from "./LoginForm";
-import LoginPage from "./LoginPage";
 import TokenService from "../services/token-service";
 import { Section } from "../Utilities/Utils";
-import ApiContext from "../ApiContext"
+import ApiContext from "../ApiContext";
 
 export default class NavWindow extends React.Component {
   static defaultProps = {
@@ -22,11 +20,11 @@ export default class NavWindow extends React.Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
-    
+    this.context.setLogin(false);
+
     const { location, history } = this.props;
     const destination = (location.state || {}).from || "/";
     history.push(destination);
-
   };
 
   renderLogoutLink() {

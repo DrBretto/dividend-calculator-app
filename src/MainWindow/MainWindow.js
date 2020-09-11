@@ -32,19 +32,30 @@ export default class MainWindow extends React.Component {
     return (
       <div className="light window main">
         <h2 className="dark">Strategies</h2>
-        <Accordion color="yellow window">
-          {strategies.map((strategy) => (
-            <Strategy key={strategy.id} label={strategy.title}>
-              {stocks
-                .filter((stock) => stock.strategy_id === strategy.id)
-                .map((stock) => (
-                  <Stock key={stock.id} stock={stock}></Stock>
-                ))}
-              <AddStock strategy_id={strategy.id}></AddStock>
-            </Strategy>
-          ))}
-        </Accordion>
-        <AddStrategy label="add new strategy"></AddStrategy>
+      {!this.context.loggedIn && (
+        <div className="dark window">
+          Please Log in to see strategies
+          </div>
+
+      )}
+
+        {this.context.loggedIn && (
+          <div>
+            <Accordion color="yellow window">
+              {strategies.map((strategy) => (
+                <Strategy key={strategy.id} label={strategy.title}>
+                  {stocks
+                    .filter((stock) => stock.strategy_id === strategy.id)
+                    .map((stock) => (
+                      <Stock key={stock.id} stock={stock}></Stock>
+                    ))}
+                  <AddStock strategy_id={strategy.id}></AddStock>
+                </Strategy>
+              ))}
+            </Accordion>
+            <AddStrategy label="add new strategy"></AddStrategy>
+          </div>
+        )}
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, } from "react-router-dom";
 
 import Header from "../Header";
 import Footer from "../Footer";
@@ -10,9 +10,14 @@ import LoginPage from "../NavWindow/LoginPage";
 import RegistrationPage from "../NavWindow/RegistrationPage";
 //import NotFoundPage from "../NotFoundPage";
 
+import ApiContext from "../ApiContext";
+
 import "./App.css";
 
 export default class App extends Component {
+  static contextType = ApiContext;
+
+
   render() {
     return (
       <main className="App">
