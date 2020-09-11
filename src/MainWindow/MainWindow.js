@@ -35,15 +35,11 @@ export default class MainWindow extends React.Component {
         <Accordion color="yellow window">
           {strategies.map((strategy) => (
             <Strategy key={strategy.id} label={strategy.title}>
-              {/* <Accordion color="gray window"> */}
-                {stocks.filter((stock) => stock.strategy_id === strategy.id)
-                  .map((stock) => (
-                  <Stock
-                    key={stock.id}
-                    stock={stock}
-                  ></Stock>
+              {stocks
+                .filter((stock) => stock.strategy_id === strategy.id)
+                .map((stock) => (
+                  <Stock key={stock.id} stock={stock}></Stock>
                 ))}
-              {/* </Accordion> */}
               <AddStock strategy_id={strategy.id}></AddStock>
             </Strategy>
           ))}

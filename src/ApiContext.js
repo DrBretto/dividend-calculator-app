@@ -3,6 +3,8 @@ import React, { Component } from "react";
 const ApiContext = React.createContext({
   stocks: [],
   strategies: [],
+  openStocks: [],
+  openStrat: {},
   setError: () => {},
   clearError: () => {},
   setStrategies: () => {},
@@ -11,6 +13,7 @@ const ApiContext = React.createContext({
   clearStocks: () => {},
   addStrategy: () => {},
   addStock: () => {},
+  setOpenStrat: () => {},
 });
 
 export default ApiContext;
@@ -20,6 +23,21 @@ export class ApiProvider extends Component {
     strategies: [],
     stocks: [],
     error: null,
+  };
+
+  setOpenStrat = (stratName) => {
+    const strat = this.state.strategies.find(
+      (strategy) => strategy.title === stratName
+    );
+    const stocks = this.state.stocks.filter(
+      (stock) => stock.strategy_id === strat.id
+    );
+    console.log("ApiProvider -> setOpenStrat -> stocks", stocks);
+
+    this.setState({
+      openStocks: stocks,
+      openStrat: strat,
+    });
   };
 
   setError = (error) => {
@@ -34,7 +52,7 @@ export class ApiProvider extends Component {
   setStrategies = (strategies) => {
     this.setState({ strategies });
   };
-  
+
   clearStrategies = () => {
     this.setState({ strategies: [] });
   };
@@ -48,8 +66,11 @@ export class ApiProvider extends Component {
   };
 
   handleAddStrategy = (strategy) => {
-    console.log("ApiProvider -> handleAddStrategy -> strategy", strategy)
-    console.log("ApiProvider -> handleAddStrategy -> this.context.strategies", this.state.strategies)
+    console.log("ApiProvider -> handleAddStrategy -> strategy", strategy);
+    console.log(
+      "ApiProvider -> handleAddStrategy -> this.context.strategies",
+      this.state.strategies
+    );
     this.setState({
       strategies: [...this.state.strategies, strategy],
     });
@@ -67,9 +88,7 @@ export class ApiProvider extends Component {
       this.state.stocks
     );
     this.setState({
-      stocks: this.state.stocks.filter(
-        (stock) => stock.stocks_id !== stockId
-      ),
+      stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
   };
 
@@ -79,9 +98,7 @@ export class ApiProvider extends Component {
       this.state.stocks
     );
     this.setState({
-      stocks: this.state.stocks.filter(
-        (stock) => stock.stocks_id !== stockId
-      ),
+      stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
   };
 
@@ -95,6 +112,7 @@ export class ApiProvider extends Component {
       setStocks: this.setStocks,
       addStrategy: this.handleAddStrategy,
       addStock: this.handleAddStock,
+      openStrat: this.setOpenStrat,
     };
     console.log("ApiProvider -> render -> value", value);
 

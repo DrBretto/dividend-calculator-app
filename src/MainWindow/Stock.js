@@ -19,7 +19,6 @@ export default class Stock extends React.Component {
     const { ticker, shares, price, industry, eps1, eps5 } = this.props.stock;
     const yld = this.props.stock.yield;
 
-    console.log("Stock -> render -> this.props.stock", this.props.stock);
     return (
       <div className="blue window">
         <h3 onClick={this.toggleMenu}> {ticker}</h3>
