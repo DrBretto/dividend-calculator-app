@@ -31,5 +31,8 @@ const calc = {
 
     return total;
   },
+
+
+
 };
 export default calc;

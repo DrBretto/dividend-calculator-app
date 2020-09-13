@@ -14,13 +14,12 @@ export default class MainWindow extends React.Component {
   componentDidMount() {
     ApiService.getStrategies()
       .then((res) => {
-        console.log("MainWindow -> componentDidMount -> res", res);
         this.context.setStrategies(res);
       })
       .catch(this.context.setError);
     ApiService.getStocks()
       .then((res) => {
-        console.log("MainWindow -> componentDidMount -> res", res);
+
         this.context.setStocks(res);
       })
       .catch(this.context.setError);

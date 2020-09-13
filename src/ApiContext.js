@@ -36,7 +36,6 @@ export class ApiProvider extends Component {
     this.setState({
       loggedIn: bool
     })
-    console.log("ApiProvider -> setLogin -> loggedIn", this.state.loggedIn)
 
     
   }
@@ -81,11 +80,7 @@ export class ApiProvider extends Component {
   };
 
   handleAddStrategy = (strategy) => {
-    console.log("ApiProvider -> handleAddStrategy -> strategy", strategy);
-    console.log(
-      "ApiProvider -> handleAddStrategy -> this.context.strategies",
-      this.state.strategies
-    );
+
     this.setState({
       strategies: [...this.state.strategies, strategy],
     });
@@ -98,20 +93,13 @@ export class ApiProvider extends Component {
   };
 
   handleDeleteStock = (stockId) => {
-    console.log(
-      "App -> handleDeleteStock -> this.state.stocks",
-      this.state.stocks
-    );
+
     this.setState({
       stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
   };
 
   handleDeleteStrategy = (stockId) => {
-    console.log(
-      "App -> handleDeleteStock -> this.state.stocks",
-      this.state.stocks
-    );
     this.setState({
       stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
@@ -134,7 +122,6 @@ export class ApiProvider extends Component {
       setOpenStrat: this.setOpenStrat
 
     };
-    console.log("ApiProvider -> render -> value", value);
 
     return (
       <ApiContext.Provider value={value}>

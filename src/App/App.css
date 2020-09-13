@@ -170,11 +170,18 @@ aside {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
 }
 
+.smGraph{
+  width: 100%;
+  height: 200px;
+}
+
 .summary {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-content: center;
+
+  
 }
 
 .window {
@@ -391,6 +398,7 @@ li {
 }
 
 .pieChart {
+  box-sizing: border-box;
   border: 1px solid purple;
 }
 

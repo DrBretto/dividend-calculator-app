@@ -32,8 +32,8 @@ export default class Example extends PureComponent {
   render() {
     return (
       <BarChart
-        width={300}
-        height={200}
+        width={150}
+        height={100}
         data={data}
         margin={{
           top: 5, right: 30, left: 20, bottom: 5,
