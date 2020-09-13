@@ -3,6 +3,7 @@ import ApiContext from "../ApiContext";
 import calc from "../Utilities/calculations";
 import PieChart from "../PieChart";
 import data from "../Utilities/data";
+import Currency from "react-currency-formatter";
 
 export default class SummaryPanel extends React.Component {
   static contextType = ApiContext;
@@ -14,22 +15,29 @@ export default class SummaryPanel extends React.Component {
     const divProfits = data.divProfits(stocks);
 
     return (
-      <div className="gray window">
+      <div className="gray window summaryPanel">
         {!this.context.openStrat.title && <p>No strategy selected</p>}
 
-        {this.context.openStrat.title && ( 
-            <h3 className="red window">{this.context.openStrat.title}</h3>)}
-      
-            <div className="light smGraph">
-              Initial Investment- ${calc.totalValue(stocks)}
-              {allocation && <PieChart data={allocation}></PieChart>}
-            </div>
+        {this.context.openStrat.title && (
+          <h3 className="red window">{this.context.openStrat.title}</h3>
+        )}
 
-            <p className="dark smGraph">
-              Dividend payout: ${calc.dividendPayout(stocks)}
-              {divProfits && <PieChart data={divProfits}></PieChart>}
-            </p>
-        
+        <div className="smGraph light window">
+          Initial Investment-{" "}
+          <Currency quantity={calc.totalValue(stocks)} currency="USD" />
+          {allocation && <PieChart data={allocation}></PieChart>}
+        </div>
+
+        <div className="light window smGraph">
+          Dividend payout: 
+          <Currency quantity={calc.dividendPayout(stocks)} currency="USD" />
+   
+          {divProfits && <PieChart data={divProfits}></PieChart>}
+        </div>
+        <div className="light window smGraph">
+          Industry Allocation:
+          {industryData && <PieChart data={industryData}></PieChart>}
+        </div>
         {/* )} */}
       </div>
     );

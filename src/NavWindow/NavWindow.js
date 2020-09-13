@@ -1,8 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StrategyOverview from "./StrategyOverview";
-import ProjectedEarnings from "./ProjectedEarnings";
-import IndustryGraph from "./IndustryGraph";
 import LoginForm from "./LoginForm";
 import TokenService from "../services/token-service";
 import { Section } from "../Utilities/Utils";
@@ -63,9 +60,6 @@ export default class NavWindow extends React.Component {
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
-        <StrategyOverview></StrategyOverview>
-        <ProjectedEarnings></ProjectedEarnings>
-        <IndustryGraph></IndustryGraph>
       </nav>
     );
   }

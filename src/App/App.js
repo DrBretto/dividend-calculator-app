@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, } from "react-router-dom";
 
-import Header from "../Header";
+import Header from "../NavWindow/Header";
 import Footer from "../Footer";
 import NavWindow from "../NavWindow/NavWindow";
 import MainWindow from "../MainWindow/MainWindow";
@@ -21,9 +21,8 @@ export default class App extends Component {
   render() {
     return (
       <main className="App">
-        <Header></Header>
-        <div className="grid">
-          <Route exact path="/" component={NavWindow} />
+          <Route path="/" component={NavWindow} />
+          <div className="grid">
           <Route path={"/login"} component={LoginPage} />
           <Route path={"/register"} component={RegistrationPage} />
           <Route exact path="/" component={MainWindow} />
