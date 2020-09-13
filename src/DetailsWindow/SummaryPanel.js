@@ -19,26 +19,33 @@ export default class SummaryPanel extends React.Component {
         {!this.context.openStrat.title && <p>No strategy selected</p>}
 
         {this.context.openStrat.title && (
-          <h3 className="red window">{this.context.openStrat.title}</h3>
+          <h3 className="red window hide">{this.context.openStrat.title}</h3>
         )}
 
-        <div className="smGraph light window">
-          Initial Investment-{" "}
-          <Currency quantity={calc.totalValue(stocks)} currency="USD" />
-          {allocation && <PieChart data={allocation}></PieChart>}
-        </div>
-
+        {this.context.openStrat.title && (
+          <div className="smGraph light window">
+            <h4>
+              Initial Investment
+              <Currency quantity={calc.totalValue(stocks)} currency="USD" />
+            </h4>
+            <PieChart data={allocation}></PieChart>
+          </div>
+        )}
+        {this.context.openStrat.title && (
+          <div className="light window smGraph">
+            <h4>
+              Dividend payout:
+              <Currency quantity={calc.dividendPayout(stocks)} currency="USD" />
+            </h4>
+            <PieChart data={divProfits}></PieChart>
+          </div>
+        )}
+{this.context.openStrat.title && (
         <div className="light window smGraph">
-          Dividend payout: 
-          <Currency quantity={calc.dividendPayout(stocks)} currency="USD" />
-   
-          {divProfits && <PieChart data={divProfits}></PieChart>}
+          <h4>Industry Allocation:</h4>
+          <PieChart data={industryData}></PieChart>
         </div>
-        <div className="light window smGraph">
-          Industry Allocation:
-          {industryData && <PieChart data={industryData}></PieChart>}
-        </div>
-        {/* )} */}
+         )}
       </div>
     );
   }

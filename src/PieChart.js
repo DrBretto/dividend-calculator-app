@@ -139,12 +139,13 @@ export default class Example extends PureComponent {
 
     return (
       <ResponsiveContainer width="95%" height="80%">
-        <PieChart className="pieChart">
+        <PieChart className="pieChart ">
           <Pie
+          
             data={data}
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={50}
+            outerRadius="100%"
             fill="#8884d8"
             dataKey="value"
           >

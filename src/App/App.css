@@ -110,19 +110,13 @@ footer {
   grid-row: span 3;
   vertical-align: bottom;
   text-align: center;
-  /* color: rgb(175, 80, 80); */
-  color: linear-gradient(
-    167deg,
-    rgba(233, 0, 9, 10.764) 0%,
-    rgba(178, 17, 18, 10.764) 23.6%,
-    rgba(144, 2, 18, 10.764) 76.4%,
-    rgba(123, 4, 27, 10.764) 100%
-  );
+  color: rgb(175, 80, 80);
+ 
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 nav {
-  height: 100%;
+  height: auto;
   grid-column: span 1;
 
   display: flex;
@@ -170,7 +164,7 @@ aside {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
 }
 
-.smGraph{
+.smGraph {
   width: auto;
   height: 200px;
 }
@@ -180,12 +174,9 @@ aside {
   flex-direction: column;
   justify-content: space-between;
   align-content: center;
-
-  
 }
 
 .window {
-  
   margin: 1px;
   margin-right: 3px;
   margin-bottom: 5px;
@@ -401,6 +392,7 @@ li {
 .pieChart {
   box-sizing: border-box;
   border: 1px solid purple;
+  font-size: 75%;
 }
 
 /* .App {
@@ -418,16 +410,30 @@ li {
   }
 
   .smGraph {
-  width: 30%;
-}
+    width: 30%;
+    font-size: 75%;
+    padding: 1vw;
+    display:flex;
+    flex-direction: column;
+    align-content: space-between;
+  }
 
-.summaryPanel{
-  display: flex;
-}
+  .summaryPanel {
+    display: flex;
+    align-content: center;
+  }
+
+  h4{
+    margin-bottom: 3px;
+  }
 
   nav {
-    grid-column: span 3;
-    grid-row: span 3;
+    
+    display: flex;
+  }
+
+  .hide {
+    display: none;
   }
 
   main {
@@ -437,7 +443,12 @@ li {
     padding-right: 0px;
     width: calc(100vw - 5px);
   }
+
   .summary {
+    /* position: fixed;
+    bottom: 0;
+    right: 0; */
+
     grid-column: span 3;
     grid-row: span 2;
   }

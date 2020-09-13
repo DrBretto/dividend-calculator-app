@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 import { Section } from "../Utilities/Utils";
 import ApiContext from "../ApiContext";
+import { Link } from "react-router-dom";
 
 export default class LoginPage extends Component {
   static defaultProps = {
@@ -24,6 +25,7 @@ export default class LoginPage extends Component {
       <Section className="LoginPage">
         <h2>Login</h2>
         <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+       
       </Section>
     );
   }
