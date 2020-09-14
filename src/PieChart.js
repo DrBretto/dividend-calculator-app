@@ -138,7 +138,7 @@ export default class Example extends PureComponent {
     console.log("piechart data", data);
 
     return (
-      <ResponsiveContainer width="95%" height="80%">
+      <ResponsiveContainer width="97%" height="85%">
         <PieChart className="pieChart ">
           <Pie
           
@@ -156,7 +156,7 @@ export default class Example extends PureComponent {
               />
             ))}
           </Pie>
-          <Legend />
+           <Legend /> 
         </PieChart>
       </ResponsiveContainer>
     );

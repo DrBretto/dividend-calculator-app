@@ -29,7 +29,7 @@ export default class MainWindow extends React.Component {
     const { stocks, strategies } = this.context;
 
     return (
-      <div className="light window main">
+      <div className="light main window strategies">
         <h2 className="dark">Strategies</h2>
       {!this.context.loggedIn && (
         <div className="dark window">

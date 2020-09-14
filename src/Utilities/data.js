@@ -15,7 +15,7 @@ const data = {
     for (let i = 0; i < stocks.length; i++) {
       data[i] = {
         name: stocks[i].ticker,
-        value: stocks[i].yield * stocks[i].shares,
+        value: (stocks[i].yield / 100) * stocks[i].price * stocks[i].shares,
       };
     }
     return data;

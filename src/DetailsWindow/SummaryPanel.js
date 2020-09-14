@@ -40,12 +40,12 @@ export default class SummaryPanel extends React.Component {
             <PieChart data={divProfits}></PieChart>
           </div>
         )}
-{this.context.openStrat.title && (
-        <div className="light window smGraph">
-          <h4>Industry Allocation:</h4>
-          <PieChart data={industryData}></PieChart>
-        </div>
-         )}
+        {this.context.openStrat.title && (
+          <div className="light window smGraph">
+            <h4>Industry Allocation:</h4>
+            <PieChart data={industryData}></PieChart>
+          </div>
+        )}
       </div>
     );
   }

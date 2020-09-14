@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, Required } from "../Utilities/Utils";
 import AuthApiService from "../services/auth-api-service";
+import { Link, Route } from "react-router-dom";
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -37,7 +38,7 @@ export default class RegistrationForm extends Component {
     return (
       <form className="RegistrationForm" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
-        <div className="full_name">
+        <div className="full_name inputs">
           <label htmlFor="RegistrationForm__full_name">
             Full name <Required />
           </label>
@@ -48,7 +49,7 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__full_name"
           ></Input>
         </div>
-        <div className="user_name">
+        <div className="user_name inputs">
           <label htmlFor="RegistrationForm__user_name">
             User name <Required />
           </label>
@@ -59,7 +60,7 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__user_name"
           ></Input>
         </div>
-        <div className="password">
+        <div className="password inputs">
           <label htmlFor="RegistrationForm__password">
             Password <Required />
           </label>
@@ -70,7 +71,7 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__password"
           ></Input>
         </div>
-        <div className="nick_name">
+        <div className="nick_name inputs">
           <label htmlFor="RegistrationForm__nick_name">Nickname</label>
           <Input
             name="nick_name"
@@ -79,7 +80,12 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__nick_name"
           ></Input>
         </div>
-        <Button type="submit">Register</Button>
+        <Button className="green window" type="submit">
+          Register
+        </Button>
+        <p>
+          Have an account already? <Link to="login">Login</Link> here!
+        </p>
       </form>
     );
   }
