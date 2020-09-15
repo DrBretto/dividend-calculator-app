@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import AccordionSection from "./AccordionSection";
-import ApiContext from "./ApiContext"
+import Context from "../../contexts/ApiContext";
 
 class Accordion extends Component {
   static propTypes = {
@@ -15,15 +15,15 @@ class Accordion extends Component {
     this.state = { openSections };
   }
 
-  static contextType = ApiContext;
+  static contextType = Context;
 
   onClick = (label) => {
     const {
       state: { openSections },
     } = this;
     const isOpen = !!openSections[label];
-    this.context.setOpenStrat(label)
-    
+    this.context.setOpenStrat(label);
+
     this.setState({
       openSections: {
         [label]: !isOpen,
@@ -39,7 +39,7 @@ class Accordion extends Component {
     } = this;
 
     return (
-      <ul >
+      <ul>
         {children.map((child, index) => (
           <AccordionSection
             key={index}

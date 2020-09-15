@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
 import TokenService from "../services/token-service";
-import ApiContext from "../ApiContext";
+import Context from "../contexts/ApiContext";
 import RegistrationPage from "./RegistrationPage";
 import LoginPage from "./LoginPage";
 
@@ -13,7 +13,7 @@ export default class NavWindow extends React.Component {
     },
   };
 
-  static contextType = ApiContext;
+  static contextType = Context;
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken();

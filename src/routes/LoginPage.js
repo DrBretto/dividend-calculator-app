@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import LoginForm from "./LoginForm";
-import { Section } from "../Utilities/Utils";
-import ApiContext from "../ApiContext";
+import LoginForm from "../components/Login/LoginForm";
+import { Section } from "../utilities/Utils";
+import Context from "../contexts/ApiContext";
 import { Link } from "react-router-dom";
 
 export default class LoginPage extends Component {
@@ -11,7 +11,7 @@ export default class LoginPage extends Component {
       push: () => {},
     },
   };
-  static contextType = ApiContext;
+  static contextType = Context;
 
   handleLoginSuccess = () => {
     this.context.setLogin(true);
@@ -24,7 +24,9 @@ export default class LoginPage extends Component {
     return (
       <Section className="LoginPage">
         <LoginForm onLoginSuccess={this.handleLoginSuccess} />
-        <p>No account? <Link to="/register">Register</Link> here!</p>
+        <p>
+          No account? <Link to="/register">Register</Link> here!
+        </p>
       </Section>
     );
   }

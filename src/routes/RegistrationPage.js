@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Section } from "../Utilities/Utils";
-import RegistrationForm from "./RegistrationForm";
+import { Section } from "../utilities/Utils";
+import RegistrationForm from "../components/Login/RegistrationForm";
 
 export default class RegistrationPage extends Component {
   static defaultProps = {

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import ApiContext from "../ApiContext";
-import config from "../config";
-import Form from "./Form";
-import TokenService from "../services/token-service";
+import ApiContext from "../../contexts/ApiContext";
+import config from "../../config";
+import Form from "../Tools/Form";
+import TokenService from "../../services/token-service";
+import ColorPicker from "../Tools/ColorPicker";
 
 export default class AddStock extends Component {
   constructor(props) {
@@ -60,6 +61,7 @@ export default class AddStock extends Component {
         <h2 onClick={this.toggleMenu}>Create a stock</h2>
         {!this.state.isHidden && (
           <Form onSubmit={this.handleSubmit} className="open window light">
+            <ColorPicker />
             <label htmlFor="ticker">Stock Ticker:</label>
             <input type="text" id="ticker" name="ticker" />
             <br />

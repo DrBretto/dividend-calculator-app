@@ -1,12 +1,12 @@
 import React from "react";
-import ApiContext from "../ApiContext";
-import calc from "../Utilities/calculations";
-import PieChart from "../PieChart";
-import data from "../Utilities/data";
+import Context from "../../contexts/ApiContext";
+import calc from "../../utilities/calculations";
+import PieChart from "./PieChart";
+import data from "../../utilities/data";
 import Currency from "react-currency-formatter";
 
 export default class SummaryPanel extends React.Component {
-  static contextType = ApiContext;
+  static contextType = Context;
 
   render() {
     const stocks = this.context.openStocks;

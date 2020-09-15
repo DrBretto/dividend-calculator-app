@@ -1,12 +1,5 @@
 import React, { PureComponent } from "react";
-import {
-  PieChart,
-  Pie,
-  Sector,
-  Cell,
-  ResponsiveContainer,
-  Legend,
-} from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
 const COLORS = [
   "#0088FE",
@@ -141,7 +134,6 @@ export default class Example extends PureComponent {
       <ResponsiveContainer width="97%" height="85%">
         <PieChart className="pieChart ">
           <Pie
-          
             data={data}
             labelLine={false}
             label={renderCustomizedLabel}
@@ -156,7 +148,7 @@ export default class Example extends PureComponent {
               />
             ))}
           </Pie>
-           <Legend /> 
+          <Legend />
         </PieChart>
       </ResponsiveContainer>
     );

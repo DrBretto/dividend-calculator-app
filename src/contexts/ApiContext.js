@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TokenService from "./services/token-service"
+import TokenService from "../services/token-service";
 
 const ApiContext = React.createContext({
   stocks: [],
@@ -32,13 +32,11 @@ export class ApiProvider extends Component {
     error: null,
   };
 
-  setLogin = (bool) =>{
+  setLogin = (bool) => {
     this.setState({
-      loggedIn: bool
-    })
-
-    
-  }
+      loggedIn: bool,
+    });
+  };
 
   setOpenStrat = (stratName) => {
     const strat = this.state.strategies.find(
@@ -80,7 +78,6 @@ export class ApiProvider extends Component {
   };
 
   handleAddStrategy = (strategy) => {
-
     this.setState({
       strategies: [...this.state.strategies, strategy],
     });
@@ -93,7 +90,6 @@ export class ApiProvider extends Component {
   };
 
   handleDeleteStock = (stockId) => {
-
     this.setState({
       stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
@@ -119,14 +115,11 @@ export class ApiProvider extends Component {
       setStocks: this.setStocks,
       addStrategy: this.handleAddStrategy,
       addStock: this.handleAddStock,
-      setOpenStrat: this.setOpenStrat
-
+      setOpenStrat: this.setOpenStrat,
     };
 
     return (
-      <ApiContext.Provider value={value}>
-        {this.props.children}
-      </ApiContext.Provider>
+      <ApiContext.Provider value={value}>{this.props.children}</ApiContext.Provider>
     );
   }
 }

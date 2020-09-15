@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import ApiContext from "../ApiContext";
-import config from "../config";
-import Form from "./Form";
-import TokenService from "../services/token-service";
+import ApiContext from "../../contexts/ApiContext";
+import config from "../../config";
+import Form from "../Tools/Form";
+import TokenService from "../../services/token-service";
 //! ---------  needs to check for duplicates
 export default class AddStrategy extends Component {
   static defaultProps = {

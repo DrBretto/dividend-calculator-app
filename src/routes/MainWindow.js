@@ -1,15 +1,16 @@
 import React from "react";
-import Accordion from "../Accordion";
-import Stock from "./Stock";
-import AddStock from "./AddStock";
-import Strategy from "./Strategy";
-import ApiContext from "../ApiContext";
-import AddStrategy from "./AddStrategy";
 
+import Accordion from "../components/Accordion/Accordion";
+import Stock from "../components/Stocks/Stock";
+import AddStock from "../components/Stocks/AddStock";
+import Strategy from "../components/Strategies/Strategy";
+import AddStrategy from "../components/Strategies/AddStrategy";
+
+import Context from "../contexts/ApiContext";
 import ApiService from "../services/api-service";
 
 export default class MainWindow extends React.Component {
-  static contextType = ApiContext;
+  static contextType = Context;
 
   componentDidMount() {
     ApiService.getStrategies()
@@ -19,7 +20,6 @@ export default class MainWindow extends React.Component {
       .catch(this.context.setError);
     ApiService.getStocks()
       .then((res) => {
-
         this.context.setStocks(res);
       })
       .catch(this.context.setError);
@@ -31,12 +31,9 @@ export default class MainWindow extends React.Component {
     return (
       <div className="light main window strategies">
         <h2 className="dark">Strategies</h2>
-      {!this.context.loggedIn && (
-        <div className="dark window">
-          Please Log in to see strategies
-          </div>
-
-      )}
+        {!this.context.loggedIn && (
+          <div className="dark window">Please Log in to see strategies</div>
+        )}
 
         {this.context.loggedIn && (
           <div>

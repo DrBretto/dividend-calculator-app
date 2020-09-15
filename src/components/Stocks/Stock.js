@@ -1,5 +1,5 @@
 import React from "react";
-import calc from "../Utilities/calculations";
+import calc from "../../utilities/calculations";
 
 export default class Stock extends React.Component {
   constructor(props) {
