@@ -188,3 +188,11 @@ h4 {
   font-size: .5em;
   overflow-x: hidden;
 }
+
+.stockDetails{
+  width: 100%;
+padding: 1%;
+display: flex;
+
+
+}

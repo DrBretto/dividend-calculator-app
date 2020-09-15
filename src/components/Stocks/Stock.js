@@ -1,5 +1,4 @@
 import React from "react";
-import calc from "../../utilities/calculations";
 
 export default class Stock extends React.Component {
   constructor(props) {
@@ -17,7 +16,7 @@ export default class Stock extends React.Component {
   }
 
   render() {
-    const { ticker, shares, price, industry, eps1, eps5 } = this.props.stock;
+    const { ticker, shares, price, industry, eps1 } = this.props.stock;
     const yld = this.props.stock.yield;
     const tv = shares * price;
     const rule72 = 72 * (yld / 100);
@@ -32,13 +31,13 @@ export default class Stock extends React.Component {
           <div className="stockDetails">
             {/* <span className="blue window">Shares: {shares}</span> */}
             {/* <span className="dark window">Price: {price}</span> */}
-            <span className="white window">Industry: {industry}</span>
-            <span className="light window">Yield: {yld}</span>
-            <span className="green window">EPS 1yr:{eps1}</span>
+            <span className="light ">Industry: {industry}</span>
+            <span className="light ">Yield: {yld}</span>
+            <span className="light ">EPS 1yr:{eps1}</span>
             {/* <span className="red window">EPS 5yr:{eps5}</span> */}
-            <h4 className="green window">
+            <span className="green ">
               Recoup:{rule72.toFixed(2)} years
-            </h4>
+            </span>
           </div>
         )}
       </div>

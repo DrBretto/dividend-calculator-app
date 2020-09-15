@@ -24,8 +24,8 @@ export default class SummaryPanel extends React.Component {
 
         {this.context.openStrat.title && (
           <div className="smGraph light window">
+            <h4>Invest: </h4>
             <h4>
-              Initial Investment
               <Currency quantity={calc.totalValue(stocks)} currency="USD" />
             </h4>
             <PieChart data={allocation}></PieChart>
@@ -33,8 +33,8 @@ export default class SummaryPanel extends React.Component {
         )}
         {this.context.openStrat.title && (
           <div className="light window smGraph">
+            <h4>Get Paid:</h4>
             <h4>
-              Dividend payout:
               <Currency quantity={calc.dividendPayout(stocks)} currency="USD" />
             </h4>
             <PieChart data={divProfits}></PieChart>
@@ -42,7 +42,8 @@ export default class SummaryPanel extends React.Component {
         )}
         {this.context.openStrat.title && (
           <div className="light window smGraph">
-            <h4>Industry Allocation:</h4>
+            <h4>Industry</h4>
+            <h4>Allocation</h4>
             <PieChart data={industryData}></PieChart>
           </div>
         )}
