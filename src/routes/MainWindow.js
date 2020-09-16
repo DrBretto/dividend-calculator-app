@@ -36,8 +36,8 @@ export default class MainWindow extends React.Component {
         )}
 
         {this.context.loggedIn && (
-          <div>
-            <Accordion color="blue window accordion">
+          <div className="strategiesWindow">
+            <Accordion color="green window accordion">
               {strategies.map((strategy) => (
                 <Strategy key={strategy.id} label={strategy.title}>
                   {stocks

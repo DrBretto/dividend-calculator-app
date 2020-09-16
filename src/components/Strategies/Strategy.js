@@ -6,7 +6,7 @@ export default class Strategy extends React.Component {
 
   render() {
     return (
-      <div className="blue window">
+      <div className=" window">
         <h3>{this.props.id}</h3>
       </div>
     );
