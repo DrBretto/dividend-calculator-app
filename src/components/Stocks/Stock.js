@@ -28,7 +28,7 @@ export default class Stock extends React.Component {
 
     return (
       <div
-        className="window "
+        className="window stock"
         style={{
           background: color.getGradient(col),
         }}

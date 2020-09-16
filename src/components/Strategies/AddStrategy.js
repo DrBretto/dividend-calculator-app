@@ -42,7 +42,7 @@ export default class AddStrategy extends Component {
       <section className="AddStrategy">
         <h2 className="blue">Create a strategy</h2>
         <Form onSubmit={this.handleSubmit}>
-          <div className="field">
+          <div className="field inputs">
             <label htmlFor="strategy-name-input">Name</label>
             <input type="text" id="strategy-name-input" name="strategy-name" />
           </div>

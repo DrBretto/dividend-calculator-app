@@ -32,10 +32,9 @@ html > * {
 }
 
 body {
-
 }
 
-main{
+main {
   /* min-width: 300px;
   max-width: 635px; */
 }
@@ -44,7 +43,6 @@ main{
   height: 100vh;
   display: flex;
   flex-direction: column;
-
 }
 
 nav {
@@ -95,19 +93,19 @@ h1 {
 }
 
 .inputs {
-  margin-top: .5em;
+  margin-top: 0.5em;
   align-self: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 75%;
   line-height: 1.5em;
-  z-index:999;
+  z-index: 999;
 }
 
-.addStock{
+.addStock {
   width: 80%;
-  font-size: .8em;
+  font-size: 0.8em;
 }
 
 a {
@@ -159,7 +157,7 @@ footer {
   grid-column: span 5;
   grid-row: span 1;
   text-align: center;
-  padding-top: .20em;
+  padding-top: 0.2em;
   font-size: 1em;
 }
 
@@ -190,13 +188,12 @@ Input {
   width: 12em;
   height: 12em;
   font-size: 1em;
-
 }
 
 h4 {
   text-align: center;
   font-size: 0.8em;
-  margin: .25em;
+  margin: 0.25em;
 }
 
 .Form {
@@ -208,39 +205,64 @@ h4 {
   padding-top: 2vh;
 }
 
-.addStockButton{
+.addStockButton {
   margin-top: 3vh;
 }
 
-.swatch{
+.swatch {
   width: 1em;
   position: absolute;
   top: 0;
   left: 0;
-
 }
 
-.shader{
+.shader {
   position: absolute;
   top: 1em;
   bottom: 2em;
   left: 1em;
   right: 1em;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
-
 }
 
-
-.recharts-default-legend{
+.recharts-default-legend {
   height: 6vh;
-  font-size: .5em;
+  font-size: 0.5em;
   overflow-x: hidden;
 }
 
-.stockDetails{
+.stockDetails {
   width: 100%;
-padding: 1%;
-display: flex;
+  padding: 1%;
+  display: flex;
+}
 
+.strategies {
+  position: relative;
+}
+
+.AddStrategy {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  right: 1em;
+  align-self: center;
+}
+
+.AddStock{
+  position: absolute;
+  right:1em;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.accordion {
+  height: 2em;
+  text-align: center;
+}
+
+.stock {
+  text-align: center;
+  margin: .5em;
 }
