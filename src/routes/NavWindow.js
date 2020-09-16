@@ -55,9 +55,6 @@ export default class NavWindow extends React.Component {
 
   render() {
 
-    const test = TokenService.getAuthToken();
-    console.log("test",test)
-
     return (
       <nav className="dark main window">
         <h1 className="dark">Dividend Calculator</h1>

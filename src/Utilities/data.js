@@ -5,6 +5,7 @@ const data = {
       data[i] = {
         name: stocks[i].ticker,
         value: stocks[i].price * stocks[i].shares,
+        color: stocks[i].color
       };
     }
     return data;
@@ -13,9 +14,11 @@ const data = {
   divProfits(stocks) {
     let data = [];
     for (let i = 0; i < stocks.length; i++) {
+      
       data[i] = {
         name: stocks[i].ticker,
         value: (stocks[i].yield / 100) * stocks[i].price * stocks[i].shares,
+        color: stocks[i].color
       };
     }
     return data;

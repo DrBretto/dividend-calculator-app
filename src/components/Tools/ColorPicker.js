@@ -1,6 +1,6 @@
 import React from "react";
 import reactCSS from "reactcss";
-import { GithubPicker } from "react-color";
+import { TwitterPicker } from "react-color";
 import ApiContext from "../../contexts/ApiContext";
 
 class SketchExample extends React.Component {
@@ -14,6 +14,12 @@ class SketchExample extends React.Component {
     },
   };
 
+  componentDidMount() {
+    this.setState({
+      color: this.props.color,
+    });
+  }
+
   static contextType = ApiContext;
 
   handleClick = () => {
@@ -25,6 +31,7 @@ class SketchExample extends React.Component {
   };
 
   handleChange = (color) => {
+    this.props.setColor(color.rgb);
     this.setState({ color: color.rgb });
   };
 
@@ -32,22 +39,22 @@ class SketchExample extends React.Component {
     const styles = reactCSS({
       "default": {
         color: {
-          width: "36px",
-          height: "14px",
-          borderRadius: "2px",
+          width: "1em",
+          height: "1em",
+          borderRadius: "100px",
+          border: "1px solid rgba(0,0,0,1)",
           background: `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`,
         },
         swatch: {
-          padding: "5px",
-          background: "#fff",
-          borderRadius: "1px",
-          boxShadow: "0 0 0 1px rgba(0,0,0,.1)",
+          padding: "1px",
+          background: "#00000000",
+          borderRadius: "3px",
           display: "inline-block",
           cursor: "pointer",
         },
         popover: {
           position: "absolute",
-          zIndex: "2",
+          zIndex: "2000",
         },
         cover: {
           position: "fixed",
@@ -60,14 +67,18 @@ class SketchExample extends React.Component {
     });
 
     return (
-      <div>
-        <div style={styles.swatch} onClick={this.handleClick}>
+      <div className="swatch">
+        <div
+          className="swatchColor"
+          style={styles.swatch}
+          onClick={this.handleClick}
+        >
           <div style={styles.color} />
         </div>
         {this.state.displayColorPicker ? (
           <div style={styles.popover}>
             <div style={styles.cover} onClick={this.handleClose} />
-            <GithubPicker
+            <TwitterPicker
               color={this.state.color}
               onChange={this.handleChange}
             />
