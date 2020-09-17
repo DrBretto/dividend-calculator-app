@@ -15,6 +15,7 @@ export default class LoginPage extends Component {
 
   handleLoginSuccess = () => {
     this.context.setLogin(true);
+    this.context.setOpenStrat([])
     const { location, history } = this.props;
     const destination = (location.state || {}).from || "/";
     history.push(destination);
