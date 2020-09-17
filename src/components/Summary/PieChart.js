@@ -36,14 +36,15 @@ export default class Example extends PureComponent {
     const data = this.props.data;
 
     return (
-      <ResponsiveContainer width="97%" height="85%">
+      <ResponsiveContainer width="97%" height="85%" display="flex" >
         <PieChart className="pieChart ">
           <Pie
+            className="pie"
             data={data}
             labelLine={false}
             label={renderCustomizedLabel}
             outerRadius="100%"
-            fill="#8884d8"
+            fill="#000000"
             dataKey="value"
           >
             {data.map((entry, index) => (
@@ -53,7 +54,7 @@ export default class Example extends PureComponent {
               />
             ))}
           </Pie>
-          <Legend />
+          <Legend className="legend" />
         </PieChart>
       </ResponsiveContainer>
     );

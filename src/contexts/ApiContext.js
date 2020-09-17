@@ -18,6 +18,7 @@ const ApiContext = React.createContext({
   addStrategy: () => {},
   addStock: () => {},
   setOpenStrat: () => {},
+
 });
 
 export default ApiContext;
@@ -51,6 +52,7 @@ export class ApiProvider extends Component {
       openStrat: strat,
     });
   };
+
 
   setError = (error) => {
     console.error(error);
@@ -86,6 +88,7 @@ export class ApiProvider extends Component {
   handleAddStock = (stock) => {
     this.setState({
       stocks: [...this.state.stocks, stock],
+      openStocks: [...this.state.openStocks, stock],
     });
   };
 
@@ -100,6 +103,8 @@ export class ApiProvider extends Component {
       stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
     });
   };
+
+
 
   render() {
     const value = {
@@ -116,6 +121,7 @@ export class ApiProvider extends Component {
       addStrategy: this.handleAddStrategy,
       addStock: this.handleAddStock,
       setOpenStrat: this.setOpenStrat,
+
     };
 
     return (

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import AccordionSection from "./AccordionSection";
+import AccordionSection from "../Accordion/AccordionSection";
 import Context from "../../contexts/ApiContext";
 
 class Accordion extends Component {
@@ -22,6 +22,7 @@ class Accordion extends Component {
       state: { openSections },
     } = this;
     const isOpen = !!openSections[label];
+    
     this.context.setOpenStrat(label);
 
     this.setState({

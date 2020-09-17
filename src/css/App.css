@@ -1,7 +1,7 @@
 html {
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+
   background-repeat: no-repeat;
   background-attachment: fixed;
   background: rgb(255, 255, 255);
@@ -28,7 +28,8 @@ html {
 }
 
 html > * {
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-shadow: -0.1em 0 0.125em black, 0 0.1em 0.125em black,
+    0.1em 0 0.125em black, 0 -0.1em 0.125em black;
 }
 
 body {
@@ -39,16 +40,19 @@ main {
   max-width: 635px; */
 }
 
+#root {
+  display: flex;
+  justify-content: center;
+}
+
 .App {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
 }
 
 nav {
   height: auto;
   width: 100%;
-  grid-column: span 5;
 }
 
 h1 {
@@ -139,26 +143,20 @@ label {
 }
 
 .strategies {
-  height: 76.4vh;
-  grid-column: span 5;
-  grid-row: span 4;
+  height: 61.8%;
   overflow-x: hidden;
 }
 
 .summary {
-  grid-column: span 5;
-  grid-row: span 2;
+  height: 38.1vh;
   overflow-x: hidden;
 }
 
 footer {
-  width: auto;
-  height: 1.5em;
-  grid-column: span 5;
-  grid-row: span 1;
   text-align: center;
-  padding-top: 0.2em;
+  padding: 0.25em 0 0.25em 0;
   font-size: 1em;
+  color: rgb(255, 55, 0);
 }
 
 h2 {
@@ -239,27 +237,99 @@ h4 {
 }
 
 .strategiesWindow {
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .AddStrategy {
-  
   align-self: center;
+  width: 80%;
 }
 
-.AddStock{
+.AddStock {
   margin: 1em;
   margin-bottom: 2em;
 }
 
 .accordion {
-  height: 2em;
+  height: auto;
+  padding: .5em 0 .5em 0;
   text-align: center;
 }
 
 .stock {
+  padding: 0.2em;
   text-align: center;
-  margin: .5em;
+  margin: 0.5em;
+}
+
+
+.buttons{
+  align-self: center;
+  width: 40%;
+  margin: 1vh;
+  margin-top: 2vh;
+}
+
+@media screen and (min-width: 600px) {
+  .App {
+    display: grid;
+    grid-template-rows: auto 80vh auto;
+    grid-template-columns: 2fr 1fr;
+    justify-content: center;
+  }
+
+  .strategies {
+    grid-row: 2;
+    grid-column: 1;
+    width: 97%;
+    /* width: 61.8vw; */
+    height: 97%;
+    /* height: 90vh; */
+  }
+
+  .summary {
+    grid-row: 2;
+    grid-column: 3;
+  }
+
+  footer {
+    width: 100%;
+    grid-column: span 2;
+  }
+
+  nav {
+    grid-column: span 2;
+  }
+
+  .summaryPanel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .smGraph {
+    width: 97%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1em auto;
+    height: 5.5em;
+  }
+
+  .recharts-legend-wrapper {
+    width: 1em;
+  }
+
+  h4 {
+    height: 1em;
+  }
+
+  .pieChart {
+
+  }
+
+  .recharts-responsive-container {
+    grid-column: span 2;
+  }
 }

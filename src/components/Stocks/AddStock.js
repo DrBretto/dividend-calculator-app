@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React, { Component } from "react";
 import ApiContext from "../../contexts/ApiContext";
 import config from "../../config";
@@ -5,6 +6,10 @@ import Form from "../Tools/Form";
 import TokenService from "../../services/token-service";
 import ColorPicker from "../Tools/ColorPicker";
 import color from "../../utilities/color";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+// import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+
 
 //TODO -- better inputs, no duplicates
 
@@ -19,17 +24,64 @@ export default class AddStock extends Component {
         b: "0",
         a: "1",
       },
+      name: {
+        value: "",
+        touched: false,
+      },
       isHidden: true,
     };
 
     this.toggleMenu = this.toggleMenu.bind(this);
   }
-
+  
   componentDidMount() {
     this.setState({
       color: color.getRandomColor(),
     });
   }
+
+  // updateName(name) {
+  //   this.setState({ name: { value: name, touched: true } });
+  //   return name;
+  // }
+
+  // validateName() {
+  //   const name = this.state.name.value.trim();
+  //   const err = " Folder name is required";
+  //   if (this.removeSpecialChars(name).length === 0) {
+  //     return (
+  //       <div className="critical">
+  //         <FontAwesomeIcon
+  //           className="criticalIcon"
+  //           icon={faExclamationCircle}
+  //         />
+  //         {err}
+  //       </div>
+  //     );
+  //   }
+  // }
+
+  // validateSymbols() {
+  //   const name = this.state.name.value.trim();
+  //   const err = " Special characters besides [space] and [-] will be removed";
+  //   const symbols = /[!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?]/g;
+  //   if (symbols.test(name))
+  //     return (
+  //       <div className="warning">
+  //         <FontAwesomeIcon
+  //           className="warningIcon"
+  //           icon={faExclamationTriangle}
+  //         />
+  //         {err}
+  //       </div>
+  //     );
+  // }
+
+  removeSpecialChars() {
+    const name = this.state.name.value.trim();
+    return name.replace(/[!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?]/g, "");
+  }
+
 
   toggleMenu() {
     this.setState({ isHidden: !this.state.isHidden });
@@ -67,7 +119,7 @@ export default class AddStock extends Component {
         return res.json();
       })
       .then((stock) => {
-        this.context.addStock(stock);
+        this.context.addStock(stock)
         this.setState({
           isHidden: true,
         });
@@ -78,6 +130,10 @@ export default class AddStock extends Component {
   };
 
   render() {
+
+    // const nameError = this.validateName();
+    // const symbolError = this.validateSymbols();
+    
     return (
       <section className="AddStock">
         <h2 onClick={this.toggleMenu}>Create a stock </h2>
