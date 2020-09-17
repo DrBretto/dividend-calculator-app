@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LoginForm from "../components/Login/LoginForm";
-import { Section } from "../utilities/Utils";
+import { Section } from "../utilities/utils";
 import ApiContext from "../contexts/ApiContext";
 import { Link } from "react-router-dom";
 

@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Section } from '../Utilities/Utils'
+import React, { Component } from "react";
+import { Section } from "../utilities/utils";
 
 export default class NotFoundPage extends Component {
   render() {
     return (
-      <Section className='NotFoundPage'>
+      <Section className="NotFoundPage">
         <h2>404 - Page not found</h2>
         <p>Try going back to your previous page.</p>
       </Section>
-    )
+    );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Section } from "../utilities/Utils";
+import { Section } from "../utilities/utils";
 import RegistrationForm from "../components/Login/RegistrationForm";
 
 export default class RegistrationPage extends Component {
@@ -11,7 +11,7 @@ export default class RegistrationPage extends Component {
 
   handleRegistrationSuccess = (user) => {
     const { history } = this.props;
-    history.push('/');
+    history.push("/");
   };
 
   render() {

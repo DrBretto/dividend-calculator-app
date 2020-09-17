@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Required } from "../../utilities/Utils";
+import { Button, Input, Required } from "../../utilities/utils";
 import AuthApiService from "../../services/auth-api-service";
 import { Link } from "react-router-dom";
 
