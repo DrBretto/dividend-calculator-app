@@ -6,7 +6,7 @@ export function NiceDate({ date, format = "Do MMMM YYYY" }) {
 }
 
 export function Hyph() {
-  return <span className="Hyph">{" - "}</span>;
+  return <span className="Hyph">{"  -  "}</span>;
 }
 
 export function Button({ className, ...props }) {
