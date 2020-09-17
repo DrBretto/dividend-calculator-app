@@ -1,5 +1,5 @@
 import React from "react";
-import color from "../../utilities/color"
+import color from "../../utils/color"
 
 export default class Stock extends React.Component {
   constructor(props) {

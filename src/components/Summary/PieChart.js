@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
-import color from "../../utilities/color"
+import color from "../../utils/color"
 
 const RADIAN = Math.PI / 180;
 

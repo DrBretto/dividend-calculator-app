@@ -5,7 +5,7 @@ import config from "../../config";
 import Form from "../Tools/Form";
 import TokenService from "../../services/token-service";
 import ColorPicker from "../Tools/ColorPicker";
-import color from "../../utilities/color";
+import color from "../../utils/color";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 // import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";

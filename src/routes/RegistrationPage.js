@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Section } from "../utilities/utils";
+import { Section } from "../utils/utils";
 import RegistrationForm from "../components/Login/RegistrationForm";
 
 export default class RegistrationPage extends Component {
