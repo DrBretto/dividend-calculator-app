@@ -29,7 +29,6 @@ const color = {
   },
 
   rgbToHex(rgb) {
-    console.log("rgbToHex -> rgb", rgb);
     return (
       "#" +
       this.componentToHex(rgb.r) +

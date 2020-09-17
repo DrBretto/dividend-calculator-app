@@ -18,9 +18,7 @@ export default class Stock extends React.Component {
 
   render() {
     const { ticker, shares, price, industry, eps1} = this.props.stock;
-    console.log("Stock -> render -> this.props.stock", this.props.stock)
     const col = color.hexToRgb(this.props.stock.color)
-    console.log("Stock -> render -> col", col)
     
     const yld = this.props.stock.yield;
     const tv = shares * price;
