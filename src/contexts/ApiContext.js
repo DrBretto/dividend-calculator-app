@@ -36,6 +36,7 @@ export class ApiProvider extends Component {
     this.setState({
       loggedIn: bool,
       openStrat: {},
+      openStocks: [],
     });
   };
 
