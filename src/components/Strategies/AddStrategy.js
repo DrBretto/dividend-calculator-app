@@ -101,7 +101,7 @@ export default class AddStrategy extends Component {
     let strategyName = this.state.name.value;
 
     return (
-      <section className="AddStrategy dark">
+      <section className="AddStrategy light">
         <h2 className="blue">Create a strategy</h2>
         <Form onSubmit={this.handleSubmit}>
           <div className="field inputs">

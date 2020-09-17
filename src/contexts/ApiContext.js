@@ -18,7 +18,6 @@ const ApiContext = React.createContext({
   addStrategy: () => {},
   addStock: () => {},
   setOpenStrat: () => {},
-
 });
 
 export default ApiContext;
@@ -36,23 +35,31 @@ export class ApiProvider extends Component {
   setLogin = (bool) => {
     this.setState({
       loggedIn: bool,
+      openStrat: {},
     });
   };
 
   setOpenStrat = (stratName) => {
-    const strat = this.state.strategies.find(
-      (strategy) => strategy.title === stratName
-    );
-    const stocks = this.state.stocks.filter(
-      (stock) => stock.strategy_id === strat.id
-    );
+    if (stratName !== "") {
+      const strat = this.state.strategies.find(
+        (strategy) => strategy.title === stratName
+      );
+      const stocks = this.state.stocks.filter(
+        (stock) => stock.strategy_id === strat.id
+      );
 
-    this.setState({
-      openStocks: stocks,
-      openStrat: strat,
-    });
+      this.setState({
+        openStocks: stocks,
+        openStrat: strat,
+      });
+    }
+    else {
+      this.setState({
+        openStocks: [],
+        openStrat: {},
+      });
+    }
   };
-
 
   setError = (error) => {
     console.error(error);
@@ -104,8 +111,6 @@ export class ApiProvider extends Component {
     });
   };
 
-
-
   render() {
     const value = {
       stocks: this.state.stocks,
@@ -121,11 +126,12 @@ export class ApiProvider extends Component {
       addStrategy: this.handleAddStrategy,
       addStock: this.handleAddStock,
       setOpenStrat: this.setOpenStrat,
-
     };
 
     return (
-      <ApiContext.Provider value={value}>{this.props.children}</ApiContext.Provider>
+      <ApiContext.Provider value={value}>
+        {this.props.children}
+      </ApiContext.Provider>
     );
   }
 }
