@@ -1,29 +1,42 @@
 import React from "react";
 import color from "../../utils/color";
-import { FaTrash } from "react-icons/fa";
+import DeleteButton from "../Tools/DeleteButton";
+import Currency from "react-currency-formatter";
+import ColorPicker from "../Tools/ColorPicker";
 
 export default class Stock extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      color: this.props.stock.color,
+
       isHidden: true,
     };
 
     this.toggleMenu = this.toggleMenu.bind(this);
+  }
+  componentDidMount() {
+    this.updateColor(this.props.stock.color);
   }
 
   toggleMenu() {
     this.setState({ isHidden: !this.state.isHidden });
   }
 
+  updateColor = (newColor) => {
+    this.setState({ color: newColor });
+  };
+
   render() {
-    const { ticker, shares, price, industry, eps1 } = this.props.stock;
+    const { id, ticker, shares, price, industry, eps1 } = this.props.stock;
     const col = color.hexToRgb(this.props.stock.color);
 
     const yld = this.props.stock.yield;
     const tv = shares * price;
     const rule72 = 72 * (yld / 100);
+    const pe = price / eps1;
+    const earningsYield = eps1 / price;
 
     return (
       <div
@@ -32,25 +45,32 @@ export default class Stock extends React.Component {
           background: color.getGradient(col),
         }}
       >
-        <h3 onClick={this.toggleMenu}>
-          {" "}
-          {ticker} - {shares} shares @ {price} = ${tv} 
-        <FaTrash className="dark window "/>
-        </h3>
-        
+        <div className="stockHead" onClick={this.toggleMenu}>
+          <h3>{ticker}</h3>
+          <h3>{shares} shares</h3>
+          <h3>
+            <Currency quantity={price} currency="USD" />
+          </h3>
+        </div>
+
+        <DeleteButton type="stock" id={id} />
+        <ColorPicker color={this.state.color} setColor={this.updateColor} />
+
         {!this.state.isHidden && (
           <div className="stockDetails">
-
             <span className="light ">Industry: {industry}</span>
-            <span className="light ">Yield: {yld}</span>
-            <span className="light ">Proposed Equity: {industry}</span>
+            <span className="light ">
+              Total Cost: <Currency quantity={tv} currency="USD" />
+            </span>
+            <span className="light ">Yield: {yld}%</span>
             <span className="light ">EPS 1yr: {eps1}</span>
-            <span className="light ">Price/EPS: {industry}</span>
-            <span className="light ">Earnings Yield: {industry}</span>
+            <span className="light ">PE: {pe.toFixed(2)}</span>
+            <span className="light ">
+              Earnings Yield: {earningsYield.toFixed(2)}
+            </span>
             <span className="green window">
               Recoup: {rule72.toFixed(2)} years
             </span>
-            
           </div>
         )}
       </div>

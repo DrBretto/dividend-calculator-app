@@ -7,37 +7,49 @@ const ApiService = {
         "authorization": `bearer ${TokenService.getAuthToken()}`,
       },
     }).then((res) =>
-    !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
-  
+
   getStocks() {
     return fetch(`${config.API_ENDPOINT}/stock/`, {
       headers: {
         "authorization": `bearer ${TokenService.getAuthToken()}`,
       },
     }).then((res) =>
-    !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
 
-  addStock(stock, strategyId){
+  addStock(stock, strategyId) {
+    return fetch(`${config.API_ENDPOINT}/strategy`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "authorization": `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        strategy_id: strategyId,
+        stock,
+      }),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
 
-      return fetch(`${config.API_ENDPOINT}/strategy`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          "authorization": `bearer ${TokenService.getAuthToken()}`,
-        },
-        body: JSON.stringify({
-          strategy_id: strategyId,
-          stock,
-        }),
-      }).then((res) =>
-        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-      );
-    
-  
+  deleteStock(stockId) {
+    return fetch(`${config.API_ENDPOINT}/strategy`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        "authorization": `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        stock_id: stockId,
+      }),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
   },
 
   getStrategy(strategyId) {
@@ -46,10 +58,10 @@ const ApiService = {
         "authorization": `bearer ${TokenService.getAuthToken()}`,
       },
     }).then((res) =>
-    !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
-  
+
   postStrategy(strategyId, text) {
     return fetch(`${config.API_ENDPOINT}/strategy`, {
       method: "POST",
@@ -65,7 +77,5 @@ const ApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
-
-
 };
 export default ApiService;

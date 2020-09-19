@@ -3,22 +3,11 @@ import reactCSS from "reactcss";
 import { TwitterPicker } from "react-color";
 import ApiContext from "../../contexts/ApiContext";
 
-class SketchExample extends React.Component {
+class ColorPicker extends React.Component {
   state = {
     displayColorPicker: false,
-    color: {
-      r: "241",
-      g: "112",
-      b: "19",
-      a: "1",
-    },
+    color: this.props.color,
   };
-
-  componentDidMount() {
-    this.setState({
-      color: this.props.color,
-    });
-  }
 
   static contextType = ApiContext;
 
@@ -69,7 +58,7 @@ class SketchExample extends React.Component {
     return (
       <div className="swatch">
         <div
-          className="swatchColor"
+          color={this.props.color}
           style={styles.swatch}
           onClick={this.handleClick}
         >
@@ -89,4 +78,4 @@ class SketchExample extends React.Component {
   }
 }
 
-export default SketchExample;
+export default ColorPicker;
