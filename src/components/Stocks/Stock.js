@@ -1,5 +1,6 @@
 import React from "react";
-import color from "../../utils/color"
+import color from "../../utils/color";
+import { FaTrash } from "react-icons/fa";
 
 export default class Stock extends React.Component {
   constructor(props) {
@@ -17,9 +18,9 @@ export default class Stock extends React.Component {
   }
 
   render() {
-    const { ticker, shares, price, industry, eps1} = this.props.stock;
-    const col = color.hexToRgb(this.props.stock.color)
-    
+    const { ticker, shares, price, industry, eps1 } = this.props.stock;
+    const col = color.hexToRgb(this.props.stock.color);
+
     const yld = this.props.stock.yield;
     const tv = shares * price;
     const rule72 = 72 * (yld / 100);
@@ -33,14 +34,23 @@ export default class Stock extends React.Component {
       >
         <h3 onClick={this.toggleMenu}>
           {" "}
-          {ticker} - {shares} shares @ {price} = ${tv}
+          {ticker} - {shares} shares @ {price} = ${tv} 
+        <FaTrash className="dark window "/>
         </h3>
+        
         {!this.state.isHidden && (
           <div className="stockDetails">
+
             <span className="light ">Industry: {industry}</span>
             <span className="light ">Yield: {yld}</span>
+            <span className="light ">Proposed Equity: {industry}</span>
             <span className="light ">EPS 1yr: {eps1}</span>
-            <span className="green window">Recoup: {rule72.toFixed(2)} years</span>
+            <span className="light ">Price/EPS: {industry}</span>
+            <span className="light ">Earnings Yield: {industry}</span>
+            <span className="green window">
+              Recoup: {rule72.toFixed(2)} years
+            </span>
+            
           </div>
         )}
       </div>

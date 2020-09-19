@@ -1,6 +1,13 @@
 import React, { PureComponent } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
-import color from "../../utils/color"
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Legend,
+  Tooltip,
+} from "recharts";
+import color from "../../utils/color";
 
 const RADIAN = Math.PI / 180;
 
@@ -31,12 +38,16 @@ const renderCustomizedLabel = ({
 };
 
 export default class Example extends PureComponent {
-
   render() {
     const data = this.props.data;
 
+    const width =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+
     return (
-      <ResponsiveContainer width="97%" height="85%" display="flex" >
+      <ResponsiveContainer width="97%" height="85%" display="flex">
         <PieChart className="pieChart ">
           <Pie
             className="pie"
@@ -54,7 +65,8 @@ export default class Example extends PureComponent {
               />
             ))}
           </Pie>
-          <Legend className="legend" />
+          <Tooltip />
+          {width < 435 && <Legend className="legend hide" />}
         </PieChart>
       </ResponsiveContainer>
     );
