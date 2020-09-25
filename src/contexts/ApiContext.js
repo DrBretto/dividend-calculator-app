@@ -18,6 +18,7 @@ const ApiContext = React.createContext({
   addStrategy: () => {},
   addStock: () => {},
   setOpenStrat: () => {},
+  deleteStock: () => {}
 });
 
 export default ApiContext;
@@ -101,14 +102,17 @@ export class ApiProvider extends Component {
   };
 
   handleDeleteStock = (stockId) => {
+    console.log("ApiProvider -> handleDeleteStock -> stockId", stockId)
     this.setState({
-      stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
+      stocks: this.state.stocks.filter((stock) => stock.id !== stockId),
+      openStocks: this.state.openStocks.filter((stock) => stock.id !== stockId),
     });
   };
 
-  handleDeleteStrategy = (stockId) => {
+  handleDeleteStrategy = (strategyId) => {
+    
     this.setState({
-      stocks: this.state.stocks.filter((stock) => stock.stocks_id !== stockId),
+      stocks: this.state.stocks.filter((stock) => stock.strategy_id !== strategyId),
     });
   };
 
@@ -127,6 +131,7 @@ export class ApiProvider extends Component {
       addStrategy: this.handleAddStrategy,
       addStock: this.handleAddStock,
       setOpenStrat: this.setOpenStrat,
+      deleteStock: this.handleDeleteStock
     };
 
     return (

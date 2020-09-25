@@ -6,9 +6,6 @@ import Form from "../Tools/Form";
 import TokenService from "../../services/token-service";
 import ColorPicker from "../Tools/ColorPicker";
 import color from "../../utils/color";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-// import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 //TODO -- better inputs, no duplicates
 
@@ -104,7 +101,7 @@ export default class AddStock extends Component {
             <ColorPicker color={this.state.color} setColor={this.updateColor} />
             <div className="shader" />
             <div className="inputs addStock">
-              <label htmlFor="ticker">Stock Ticker:</label>
+              <label htmlFor="ticker">Ticker:</label>
               <input type="text" id="ticker" name="ticker" />
             </div>
             <div className="inputs addStock">
@@ -116,11 +113,11 @@ export default class AddStock extends Component {
               <input type="text" id="shares" name="shares" />
             </div>
             <div className="inputs addStock">
-              <label htmlFor="price">Target price:</label>
+              <label htmlFor="price">Price:</label>
               <input type="text" id="price" name="price" />
             </div>
             <div className="inputs addStock">
-              <label htmlFor="yield">Dividend Yield:</label>
+              <label htmlFor="yield">Yield:</label>
               <input type="text" id="yield" name="yield" />
             </div>
             <div className="inputs addStock">

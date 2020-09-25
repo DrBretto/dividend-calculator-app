@@ -28,6 +28,8 @@ export default class Stock extends React.Component {
     this.setState({ color: newColor });
   };
 
+
+
   render() {
     const { id, ticker, shares, price, industry, eps1 } = this.props.stock;
     const col = color.hexToRgb(this.props.stock.color);

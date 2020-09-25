@@ -38,17 +38,15 @@ const ApiService = {
   },
 
   deleteStock(stockId) {
-    return fetch(`${config.API_ENDPOINT}/strategy`, {
+    return fetch(`${config.API_ENDPOINT}/stock/${stockId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
         "authorization": `bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify({
-        stock_id: stockId,
-      }),
+
     }).then((res) =>
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res
     );
   },
 

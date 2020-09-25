@@ -1,6 +1,8 @@
 html {
   height: 100vh;
-  width: 100vw;
+
+  min-width: 300px;
+  max-width: 635px;
 
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -32,14 +34,6 @@ html > * {
     0.1em 0 0.125em black, 0 -0.1em 0.125em black;
 }
 
-body {
-}
-
-main {
-  /* min-width: 300px;
-  max-width: 635px; */
-}
-
 #root {
   display: flex;
   justify-content: center;
@@ -48,6 +42,9 @@ main {
 .App {
   height: 100vh;
   width: 100vw;
+
+  min-width: 350px;
+  max-width: 635px;
 }
 
 nav {
