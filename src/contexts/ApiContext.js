@@ -36,10 +36,19 @@ export class ApiProvider extends Component {
   };
 
   setLogin = (bool, userName) => {
+    this.setState({
+      loggedIn: bool,
+      loggedInUser: userName,
+      openStrat: {},
+      openStocks: [],
+      stocks: [],
+      strategies: [],
+    });
+
     ApiService.getStrategies()
       .then((res) => {
         this.setState({
-          stocks: res,
+          strategies: res,
         });
       })
       .catch(this.context.setError);
@@ -50,13 +59,6 @@ export class ApiProvider extends Component {
         });
       })
       .catch(this.context.setError);
-
-    this.setState({
-      loggedIn: bool,
-      loggedInUser: userName,
-      openStrat: {},
-      openStocks: [],
-    });
   };
 
   setOpenStrat = (stratName) => {
