@@ -31,12 +31,17 @@ export default class AddStock extends Component {
   }
   
   componentDidMount() {
+   this.getRandomColor();
+  }
+
+  getRandomColor(){
     this.setState({
       color: color.getRandomColor(),
     });
   }
 
   toggleMenu() {
+    this.getRandomColor()
     this.setState({ isHidden: !this.state.isHidden });
   }
 
