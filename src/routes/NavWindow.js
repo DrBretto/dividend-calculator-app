@@ -27,7 +27,7 @@ export default class NavWindow extends React.Component {
   renderLogoutLink() {
     return (
       <div className="Header__logged-in">
-        <h2 className="welcome">Welcome, User Name!</h2>
+        <h2 className="welcome">Welcome, {this.context.loggedInUser}</h2>
         <Link onClick={this.handleLogoutClick} to="/">
           Logout
         </Link>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TokenService from "../services/token-service";
+import ApiService from "../services/api-service";
 
 const ApiContext = React.createContext({
   stocks: [],
@@ -7,6 +8,7 @@ const ApiContext = React.createContext({
   openStocks: [],
   openStrat: {},
   loggedIn: TokenService.hasAuthToken(),
+  loggedInUser: "guest",
   setLogin: () => {},
   setLogout: () => {},
   setError: () => {},
@@ -18,7 +20,7 @@ const ApiContext = React.createContext({
   addStrategy: () => {},
   addStock: () => {},
   setOpenStrat: () => {},
-  deleteStock: () => {}
+  deleteStock: () => {},
 });
 
 export default ApiContext;
@@ -33,9 +35,25 @@ export class ApiProvider extends Component {
     error: null,
   };
 
-  setLogin = (bool) => {
+  setLogin = (bool, userName) => {
+    ApiService.getStrategies()
+      .then((res) => {
+        this.setState({
+          stocks: res,
+        });
+      })
+      .catch(this.context.setError);
+    ApiService.getStocks()
+      .then((res) => {
+        this.setState({
+          stocks: res,
+        });
+      })
+      .catch(this.context.setError);
+
     this.setState({
       loggedIn: bool,
+      loggedInUser: userName,
       openStrat: {},
       openStocks: [],
     });
@@ -54,8 +72,7 @@ export class ApiProvider extends Component {
         openStocks: stocks,
         openStrat: strat,
       });
-    }
-    else {
+    } else {
       this.setState({
         openStocks: [],
         openStrat: {},
@@ -102,7 +119,7 @@ export class ApiProvider extends Component {
   };
 
   handleDeleteStock = (stockId) => {
-    console.log("ApiProvider -> handleDeleteStock -> stockId", stockId)
+    console.log("ApiProvider -> handleDeleteStock -> stockId", stockId);
     this.setState({
       stocks: this.state.stocks.filter((stock) => stock.id !== stockId),
       openStocks: this.state.openStocks.filter((stock) => stock.id !== stockId),
@@ -110,9 +127,10 @@ export class ApiProvider extends Component {
   };
 
   handleDeleteStrategy = (strategyId) => {
-    
     this.setState({
-      stocks: this.state.stocks.filter((stock) => stock.strategy_id !== strategyId),
+      stocks: this.state.stocks.filter(
+        (stock) => stock.strategy_id !== strategyId
+      ),
     });
   };
 
@@ -122,6 +140,7 @@ export class ApiProvider extends Component {
       strategies: this.state.strategies,
       openStrat: this.state.openStrat,
       loggedIn: this.state.loggedIn,
+      loggedInUser: this.state.loggedInUser,
       openStocks: this.state.openStocks,
       setLogin: this.setLogin,
       setError: this.setError,
@@ -131,7 +150,7 @@ export class ApiProvider extends Component {
       addStrategy: this.handleAddStrategy,
       addStock: this.handleAddStock,
       setOpenStrat: this.setOpenStrat,
-      deleteStock: this.handleDeleteStock
+      deleteStock: this.handleDeleteStock,
     };
 
     return (

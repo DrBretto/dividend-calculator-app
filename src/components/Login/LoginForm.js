@@ -23,10 +23,11 @@ export default class LoginForm extends Component {
       password: password.value,
     })
       .then((res) => {
+        TokenService.saveAuthToken(res.authToken);
+        console.log("LoginForm -> handleSubmitJwtAuth -> user_name.value", user_name.value)
+        this.context.setLogin(true, user_name.value);
         user_name.value = "";
         password.value = "";
-        TokenService.saveAuthToken(res.authToken);
-        this.context.setLogin(true);
         this.props.onLoginSuccess();
       })
       .catch((res) => {
