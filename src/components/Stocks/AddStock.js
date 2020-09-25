@@ -29,19 +29,19 @@ export default class AddStock extends Component {
 
     this.toggleMenu = this.toggleMenu.bind(this);
   }
-  
+
   componentDidMount() {
-   this.getRandomColor();
+    this.getRandomColor();
   }
 
-  getRandomColor(){
+  getRandomColor() {
     this.setState({
       color: color.getRandomColor(),
     });
   }
 
   toggleMenu() {
-    this.getRandomColor()
+    this.getRandomColor();
     this.setState({ isHidden: !this.state.isHidden });
   }
 
@@ -77,7 +77,7 @@ export default class AddStock extends Component {
         return res.json();
       })
       .then((stock) => {
-        this.context.addStock(stock)
+        this.context.addStock(stock);
         this.setState({
           isHidden: true,
         });
@@ -88,13 +88,14 @@ export default class AddStock extends Component {
   };
 
   render() {
-
     // const nameError = this.validateName();
     // const symbolError = this.validateSymbols();
-    
+
     return (
       <section className="AddStock">
-        <h2 onClick={this.toggleMenu} className="addStockHeader">+Stock </h2>
+        <h2 onClick={this.toggleMenu} className="addStockHeader">
+          +Stock{" "}
+        </h2>
         {!this.state.isHidden && (
           <Form
             onSubmit={this.handleSubmit}

@@ -1,8 +1,6 @@
 html {
   height: 100vh;
-
-  min-width: 300px;
-  max-width: 635px;
+  width: 100vw;
 
   background-repeat: no-repeat;
   background-attachment: fixed;
