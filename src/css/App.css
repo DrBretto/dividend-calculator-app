@@ -305,6 +305,15 @@ h4 {
   right: 0.2em;
 }
 
+.error {
+  margin: .125em 2em 0 2em;
+
+}
+
+.critical {
+  text-align: center;
+}
+
 @media screen and (min-width: 600px) {
   .App {
     display: grid;

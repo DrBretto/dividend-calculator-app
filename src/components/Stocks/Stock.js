@@ -4,6 +4,8 @@ import DeleteButton from "../Tools/DeleteButton";
 import Currency from "react-currency-formatter";
 import ColorPicker from "../Tools/ColorPicker";
 
+//! - proptypes
+
 export default class Stock extends React.Component {
   constructor(props) {
     super(props);

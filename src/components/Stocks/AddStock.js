@@ -6,6 +6,10 @@ import Form from "../Tools/Form";
 import TokenService from "../../services/token-service";
 import ColorPicker from "../Tools/ColorPicker";
 import color from "../../utils/color";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import FormValidator from "../Tools/FormValidator";
 
 //TODO -- better inputs, no duplicates
 
@@ -20,14 +24,59 @@ export default class AddStock extends Component {
         b: "0",
         a: "1",
       },
-      name: {
-        value: "",
-        touched: false,
+
+      stock: {
+        ticker: "",
+        industry: "",
+        shares: "",
+        price: "",
+        yield: "",
+        eps1: "",
       },
+
+      tickerTouched: false,
+      industryTouched: false,
+      priceTouched: false,
+      sharesTouched: false,
+      yieldTouched: false,
+      eps1Touched: false,
+
       isHidden: true,
     };
 
     this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  static contextType = ApiContext;
+
+  validateTicker() {
+    const name = this.state.stock.ticker.trim();
+    const err = " Stock ticker is required";
+    if (this.removeSpecialChars(name).length === 0) {
+      return (
+        <div className="critical">
+          <FontAwesomeIcon
+            className="criticalIcon"
+            icon={faExclamationCircle}
+          />
+          {err}
+        </div>
+      );
+    }
+  }
+
+  updateStock(stock) {
+    this.setState({
+      stock: {
+        ticker: stock.ticker,
+        industry: stock.industry,
+        price: stock.price,
+        shares: stock.shares,
+        yield: stock.yield,
+        eps1: stock.eps1,
+      },
+    });
+    return stock;
   }
 
   componentDidMount() {
@@ -48,8 +97,6 @@ export default class AddStock extends Component {
   updateColor = (newColor) => {
     this.setState({ color: newColor });
   };
-
-  static contextType = ApiContext;
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -87,9 +134,22 @@ export default class AddStock extends Component {
       });
   };
 
+  removeSpecialChars() {
+    const name = this.state.stock.ticker.trim();
+    return name.replace(/[!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?]/g, "");
+  }
+
   render() {
-    // const nameError = this.validateName();
-    // const symbolError = this.validateSymbols();
+    let stock = {
+      ticker: this.state.stock.ticker,
+      industry: this.state.stock.industry,
+      price: this.state.stock.price,
+      shares: this.state.stock.shares,
+      yield: this.state.stock.yield,
+      eps1: this.state.stock.eps1,
+    };
+
+    const tickerErr = this.validateTicker();
 
     return (
       <section className="AddStock">
@@ -98,7 +158,6 @@ export default class AddStock extends Component {
         </h2>
         {!this.state.isHidden && (
           <Form
-            onSubmit={this.handleSubmit}
             className="window"
             style={{
               background: color.getGradient(this.state.color),
@@ -108,29 +167,106 @@ export default class AddStock extends Component {
             <div className="shader" />
             <div className="inputs addStock">
               <label htmlFor="ticker">Ticker:</label>
-              <input type="text" id="ticker" name="ticker" />
+              <input
+                onChange={(e) => {
+                  this.setState({ tickerTouched: true });
+                  stock.ticker = e.currentTarget.value;
+                  this.updateStock(stock);
+                }}
+                type="text"
+                id="ticker"
+                name="ticker"
+              />
             </div>
             <div className="inputs addStock">
               <label htmlFor="industry">Industry:</label>
-              <input type="text" id="industry" name="industry" />
+              <input
+                onChange={(e) => {
+                  this.setState({ industryTouched: true });
+                  stock.industry = e.currentTarget.value;
+                  this.updateStock(stock);
+                }}
+                type="text"
+                id="industry"
+                name="industry"
+              />
             </div>
             <div className="inputs addStock">
               <label htmlFor="shares">Shares:</label>
-              <input type="text" id="shares" name="shares" />
+              <input
+                onChange={(e) => {
+                  this.setState({ sharesTouched: true });
+                  stock.shares = e.currentTarget.value;
+                  this.updateStock(stock);
+                }}
+                type="number"
+                id="shares"
+                name="shares"
+              />
             </div>
             <div className="inputs addStock">
               <label htmlFor="price">Price:</label>
-              <input type="text" id="price" name="price" />
+              <input
+                onChange={(e) => {
+                  this.setState({ priceTouched: true });
+                  stock.price = e.currentTarget.value;
+                  this.updateStock(stock);
+                }}
+                type="number"
+                id="price"
+                name="price"
+              />
             </div>
             <div className="inputs addStock">
               <label htmlFor="yield">Yield:</label>
-              <input type="text" id="yield" name="yield" />
+              <input
+                onChange={(e) => {
+                  this.setState({ yieldTouched: true });
+                  stock.yield = e.currentTarget.value;
+                  this.updateStock(stock);
+                }}
+                type="number"
+                id="yield"
+                name="yield"
+              />
             </div>
             <div className="inputs addStock">
               <label htmlFor="eps1">EPS 1yr:</label>
-              <input type="text" id="eps1" name="eps1" />
+              <input
+                onChange={(e) => {
+                  this.setState({ eps1Touched: true });
+                  stock.eps1 = e.currentTarget.value;
+                  this.updateStock(stock);
+                }}
+                type="number"
+                id="eps1"
+                name="eps1"
+                />
             </div>
-            <button className="addStockButton" type="submit">
+
+            {this.state.tickerTouched && <FormValidator message={tickerErr} />}
+            {this.state.tickerTouched && <FormValidator message={tickerErr} />}
+            {this.state.tickerTouched && <FormValidator message={tickerErr} />}
+            {this.state.tickerTouched && <FormValidator message={tickerErr} />}
+            {this.state.tickerTouched && <FormValidator message={tickerErr} />}
+            <button 
+            onClick={(e) => {
+              this.setState({       
+                tickerTouched: true,
+                industryTouched: true,
+                priceTouched: true,
+                sharesTouched: true,
+                yieldTouched: true,
+                eps1Touched: true, })
+             
+              // stock.ticker = this.removeSpecialChars(stock.ticker);
+              this.updateStock(stock);
+              if (!tickerErr && !tickerErr && !tickerErr) {
+                this.handleSubmit(stock);
+              }
+            }}
+            className="addStockButton" 
+            type="submit">
               Add stock
             </button>
           </Form>
