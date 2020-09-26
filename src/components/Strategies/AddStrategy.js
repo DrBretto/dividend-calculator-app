@@ -34,7 +34,7 @@ export default class AddStrategy extends Component {
 
   validateName() {
     const name = this.state.name.value.trim();
-    const err = " Folder name is required";
+    const err = " Strategy name is required";
     if (this.removeSpecialChars(name).length === 0) {
       return (
         <div className="critical">
@@ -117,6 +117,9 @@ export default class AddStrategy extends Component {
             />
           </div>
           <div>
+            {this.state.name.touched && <FormValidator message={nameError} />}
+            {this.state.name.touched && <FormValidator message={symbolError} />}
+          </div>
             <button
               className="red window buttons"
               type="submit"
@@ -129,9 +132,6 @@ export default class AddStrategy extends Component {
             >
               Add strategy
             </button>
-            {this.state.name.touched && <FormValidator message={nameError} />}
-            {this.state.name.touched && <FormValidator message={symbolError} />}
-          </div>
         </Form>
       </section>
     );

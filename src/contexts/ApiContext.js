@@ -8,7 +8,7 @@ const ApiContext = React.createContext({
   openStocks: [],
   openStrat: {},
   loggedIn: TokenService.hasAuthToken(),
-  loggedInUser: "guest",
+  loggedInUser: "",
   setLogin: () => {},
   setLogout: () => {},
   setError: () => {},
