@@ -32,7 +32,29 @@ export default class MainWindow extends React.Component {
       <div className="light main window strategies">
         <h2 className="dark">Strategies</h2>
         {!this.context.loggedIn && (
-          <div className="dark window">Please Log in to see strategies</div>
+          <div className="dark window">
+            <p className="dark window">Please Log in to see strategies</p>
+            <p className="welcome">Welcome to my Dividend Calculator App!</p>
+            <p className="description">
+              This app is a tool to help you evaluate your potential dividend
+              allocation. Simply navigate to{" "}
+              <a href="https://www.investopedia.com/">Investopedia.com </a>
+              to get the required info on the stocks you want to preview.
+            </p>
+
+            <p className="description">
+              You can then create a portfolio strategy by adding stocks and
+              playing around with the values and see the effects of the changes
+              in realtime
+            </p>
+
+            <p className="description">
+              For testing purposes, please log in with the following
+              credentials:
+            </p>
+            <p className="description">Username: DemoUser</p>
+            <p className="description">password: Passw0rd!</p>
+          </div>
         )}
 
         {this.context.loggedIn && (
