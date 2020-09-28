@@ -14,5 +14,4 @@ For testing purposes, please log in with the following credentials:
 
 How to use:
 
-(/readme/demo.jpg)
-Format: ![Alt Text](../readme/demo.jpg)
+![Main View](/readme/demo.jpg)
