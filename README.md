@@ -14,5 +14,5 @@ For testing purposes, please log in with the following credentials:
 
 How to use:
 
-![GitHub Logo](/images/logo.png)
-Format: ![Alt Text](url)
+(/readme/demo.jpg)
+Format: ![Alt Text](../readme/demo.jpg)
