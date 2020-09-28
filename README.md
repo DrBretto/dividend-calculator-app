@@ -14,4 +14,4 @@ For testing purposes, please log in with the following credentials:
 
 How to use:
 
-![Main View](/images/demo.jpg)
+![Main View](https://github.com/DrBretto/dividend-calculator-app/blob/master/images/Demo.JPG?raw=true)
