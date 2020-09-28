@@ -14,4 +14,4 @@ For testing purposes, please log in with the following credentials:
 
 How to use:
 
-![Main View](/readme/demo.jpg)
+![Main View](/images/demo.jpg)
