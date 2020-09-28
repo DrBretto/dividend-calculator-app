@@ -38,7 +38,9 @@ export default class MainWindow extends React.Component {
             <p className="description">
               This app is a tool to help you evaluate your potential dividend
               allocation. Simply navigate to{" "}
-              <a href="https://www.investopedia.com/" target="_blank">Investopedia.com </a>
+              <a href="https://www.investopedia.com/" target="_blank">
+                Investopedia.com{" "}
+              </a>
               to get the required info on the stocks you want to preview.
             </p>
 
@@ -52,7 +54,7 @@ export default class MainWindow extends React.Component {
               For testing purposes, please log in with the following
               credentials:
             </p>
-            <p className="description">Username: DemoUser</p>
+            <p className="description">Username: Demo</p>
             <p className="description">password: Passw0rd!</p>
           </div>
         )}

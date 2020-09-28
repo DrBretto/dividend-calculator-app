@@ -1,5 +1,7 @@
 import TokenService from "./token-service";
 import config from "../config";
+
+
 const ApiService = {
   getStrategies() {
     return fetch(`${config.API_ENDPOINT}/strategy/`, {

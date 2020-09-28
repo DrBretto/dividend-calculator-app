@@ -131,7 +131,6 @@ export default class AddStock extends Component {
   handleSubmit = (stock) => {
     stock.color = color.rgbToHex(this.state.color);
     stock.strategy_id = String(this.props.strategy_id);
-    console.log("AddStock -> handleSubmit -> stock", stock);
 
     fetch(`${config.API_ENDPOINT}/stock`, {
       method: "POST",
@@ -169,7 +168,6 @@ export default class AddStock extends Component {
       yield: this.state.stock.yield,
       eps1: this.state.stock.eps1,
     };
-    console.log("render -> stock", stock);
 
     const tickerErr = this.validateTicker();
     const allErr = this.validateAll();

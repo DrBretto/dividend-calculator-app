@@ -8,7 +8,7 @@ const ApiContext = React.createContext({
   openStocks: [],
   openStrat: {},
   loggedIn: TokenService.hasAuthToken(),
-  loggedInUser: "",
+  loggedInUser: () => {},
   setLogin: () => {},
   setLogout: () => {},
   setError: () => {},
@@ -32,13 +32,15 @@ export class ApiProvider extends Component {
     openStrat: {},
     openStocks: [],
     loggedIn: TokenService.hasAuthToken(),
+    loggedInUser: TokenService.getUsernameFromToken(),
     error: null,
   };
+
 
   setLogin = (bool, userName) => {
     this.setState({
       loggedIn: bool,
-      loggedInUser: userName,
+      loggedInUser: TokenService.getUsernameFromToken(),
       openStrat: {},
       openStocks: [],
       stocks: [],
@@ -121,7 +123,6 @@ export class ApiProvider extends Component {
   };
 
   handleDeleteStock = (stockId) => {
-    console.log("ApiProvider -> handleDeleteStock -> stockId", stockId);
     this.setState({
       stocks: this.state.stocks.filter((stock) => stock.id !== stockId),
       openStocks: this.state.openStocks.filter((stock) => stock.id !== stockId),

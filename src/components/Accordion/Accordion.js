@@ -21,7 +21,6 @@ class Accordion extends Component {
     const {
       state: { openSections },
     } = this;
-    console.log("Accordion -> onClick -> openSections", openSections)
     const isOpen = !!openSections[label];
     if(!isOpen) this.context.setOpenStrat(label);
     else this.context.setOpenStrat("");

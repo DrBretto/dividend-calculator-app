@@ -24,7 +24,6 @@ export default class LoginForm extends Component {
     })
       .then((res) => {
         TokenService.saveAuthToken(res.authToken);
-        console.log("LoginForm -> handleSubmitJwtAuth -> user_name.value", user_name.value)
         this.context.setLogin(true, user_name.value);
         user_name.value = "";
         password.value = "";
