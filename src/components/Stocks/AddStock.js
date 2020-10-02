@@ -282,7 +282,7 @@ export default class AddStock extends Component {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                this.setState({submitTouched: true });
+                this.setState({ submitTouched: true });
                 this.updateStock(stock);
                 if (!tickerErr && !allErr) {
                   this.handleSubmit(stock);

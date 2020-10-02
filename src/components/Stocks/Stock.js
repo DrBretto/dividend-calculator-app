@@ -4,8 +4,6 @@ import DeleteButton from "../Tools/DeleteButton";
 import Currency from "react-currency-formatter";
 import ColorPicker from "../Tools/ColorPicker";
 
-//! - proptypes
-
 export default class Stock extends React.Component {
   constructor(props) {
     super(props);
@@ -29,8 +27,6 @@ export default class Stock extends React.Component {
   updateColor = (newColor) => {
     this.setState({ color: newColor });
   };
-
-
 
   render() {
     const { id, ticker, shares, price, industry, eps1 } = this.props.stock;

@@ -22,15 +22,14 @@ class Accordion extends Component {
       state: { openSections },
     } = this;
     const isOpen = !!openSections[label];
-    if(!isOpen) this.context.setOpenStrat(label);
+    if (!isOpen) this.context.setOpenStrat(label);
     else this.context.setOpenStrat("");
-    
+
     this.setState({
       openSections: {
         [label]: !isOpen,
       },
     });
-   
   };
 
   render() {

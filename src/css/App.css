@@ -306,8 +306,7 @@ h4 {
 }
 
 .error {
-  margin: .125em 2em 0 2em;
-
+  margin: 0.125em 2em 0 2em;
 }
 
 .critical {
@@ -315,15 +314,12 @@ h4 {
 }
 
 .welcome {
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 }
 
-.description{
+.description {
   margin: 1em;
 }
 

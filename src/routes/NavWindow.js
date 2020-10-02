@@ -54,11 +54,10 @@ export default class NavWindow extends React.Component {
   };
 
   render() {
-
     return (
       <nav className="dark main window">
         <h1 className="dark">Dividend Calculator</h1>
-        
+
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

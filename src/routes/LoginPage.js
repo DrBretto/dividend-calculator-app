@@ -14,7 +14,6 @@ export default class LoginPage extends Component {
   static contextType = ApiContext;
 
   handleLoginSuccess = () => {
-  
     const { location, history } = this.props;
     const destination = (location.state || {}).from || "/";
     history.push(destination);

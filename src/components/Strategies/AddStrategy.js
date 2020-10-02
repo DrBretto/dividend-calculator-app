@@ -120,18 +120,18 @@ export default class AddStrategy extends Component {
             {this.state.name.touched && <FormValidator message={nameError} />}
             {this.state.name.touched && <FormValidator message={symbolError} />}
           </div>
-            <button
-              className="red window buttons"
-              type="submit"
-              onClick={(e) => {
-                strategyName = this.updateName(
-                  this.removeSpecialChars(strategyName)
-                );
-                if (!nameError) this.handleSubmit(e, strategyName);
-              }}
-            >
-              Add strategy
-            </button>
+          <button
+            className="red window buttons"
+            type="submit"
+            onClick={(e) => {
+              strategyName = this.updateName(
+                this.removeSpecialChars(strategyName)
+              );
+              if (!nameError) this.handleSubmit(e, strategyName);
+            }}
+          >
+            Add strategy
+          </button>
         </Form>
       </section>
     );

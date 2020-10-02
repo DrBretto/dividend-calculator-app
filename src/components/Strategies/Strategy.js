@@ -5,10 +5,6 @@ export default class Strategy extends React.Component {
   static contextType = Context;
 
   render() {
-    return (
-      <div >
-
-      </div>
-    );
+    return <div></div>;
   }
 }

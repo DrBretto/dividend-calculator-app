@@ -36,7 +36,6 @@ export class ApiProvider extends Component {
     error: null,
   };
 
-
   setLogin = (bool, userName) => {
     this.setState({
       loggedIn: bool,

@@ -7,10 +7,8 @@ const calc = {
     return total;
   },
 
-  rule72(stock){
-    
-    
-    return 72/(stock.yield)
+  rule72(stock) {
+    return 72 / stock.yield;
   },
 
   expected1yr(stocks) {
@@ -26,13 +24,10 @@ const calc = {
     let total = 0;
 
     for (let i = 0; i < stocks.length; i++) {
-      total += (stocks[i].yield/100) * stocks[i].price * stocks[i].shares;
+      total += (stocks[i].yield / 100) * stocks[i].price * stocks[i].shares;
     }
 
     return total;
   },
-
-
-
 };
 export default calc;

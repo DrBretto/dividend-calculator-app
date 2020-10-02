@@ -8,5 +8,4 @@ export const getStocksForStrategy = (stocks = [], id) =>
   !id ? stocks : stocks.filter((stock) => stock.id === id);
 
 export const countStocksForStrategy = (stocks = [], id) =>
-
   stocks.filter((stock) => stock.id === id).length;
