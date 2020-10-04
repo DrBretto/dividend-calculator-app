@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 import AccordionSection from "../Accordion/AccordionSection";
 import Context from "../../contexts/ApiContext";
 
 class Accordion extends Component {
-  static propTypes = {
-    children: PropTypes.instanceOf(Object).isRequired,
-  };
-
   constructor(props) {
     super(props);
     const openSections = {};

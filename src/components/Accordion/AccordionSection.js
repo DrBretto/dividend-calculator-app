@@ -1,14 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 class AccordionSection extends Component {
-  static propTypes = {
-    children: PropTypes.instanceOf(Object).isRequired,
-    isOpen: PropTypes.bool.isRequired,
-    label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-  };
-
   onClick = () => {
     this.props.onClick(this.props.label);
   };
