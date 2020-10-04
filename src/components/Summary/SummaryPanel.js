@@ -1,9 +1,10 @@
 import React from "react";
+import Currency from "react-currency-formatter";
+
 import Context from "../../contexts/ApiContext";
 import calc from "../../utils/calculations";
 import PieChart from "./PieChart";
 import data from "../../utils/data";
-import Currency from "react-currency-formatter";
 
 export default class SummaryPanel extends React.Component {
   static contextType = Context;

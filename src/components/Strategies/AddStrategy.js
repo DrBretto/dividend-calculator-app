@@ -1,15 +1,15 @@
 /* eslint-disable no-useless-escape */
 import React, { Component } from "react";
-import ApiContext from "../../contexts/ApiContext";
-import config from "../../config";
-import Form from "../Tools/Form";
-import TokenService from "../../services/token-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+
+import config from "../../config";
+import ApiContext from "../../contexts/ApiContext";
+import Form from "../Tools/Form";
+import TokenService from "../../services/token-service";
 import FormValidator from "../Tools/FormValidator";
 
-//! ---------  needs to check for duplicates
 export default class AddStrategy extends Component {
   constructor(props) {
     super(props);

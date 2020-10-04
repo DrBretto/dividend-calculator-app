@@ -7,6 +7,7 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
+
 import color from "../../utils/color";
 
 const RADIAN = Math.PI / 180;

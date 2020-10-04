@@ -1,15 +1,16 @@
 import React from "react";
-import Accordion from "./Accordion";
-import Strategy from "../../components/Strategies/Strategy";
+import { MemoryRouter } from "react-router";
 import { mount, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { MemoryRouter } from "react-router";
+
+import Strategy from "../../components/Strategies/Strategy";
+import Accordion from "./Accordion";
 
 configure({ adapter: new Adapter() });
 test("renders", () => {
   mount(
     <MemoryRouter initialEntries={["/"]}>
-      <Accordion >
+      <Accordion>
         <Strategy />
         <Strategy />
         <Strategy />

@@ -1,9 +1,10 @@
 import React from "react";
-import App from "./App";
 import { mount, configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import { MemoryRouter } from "react-router";
+import Adapter from "enzyme-adapter-react-16";
+
 import LoginForm from "../components/Login/LoginForm";
+import App from "./App";
 
 configure({ adapter: new Adapter() });
 test("renders login form", () => {

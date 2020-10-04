@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import DeleteButton from "./DeleteButton";
 
 it("renders without crashing", () => {

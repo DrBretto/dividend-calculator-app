@@ -1,6 +1,7 @@
 import React from "react";
 import reactCSS from "reactcss";
 import { TwitterPicker } from "react-color";
+
 import ApiContext from "../../contexts/ApiContext";
 
 class ColorPicker extends React.Component {

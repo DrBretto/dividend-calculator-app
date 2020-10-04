@@ -1,7 +1,8 @@
 import React from "react";
+import Currency from "react-currency-formatter";
+
 import color from "../../utils/color";
 import DeleteButton from "../Tools/DeleteButton";
-import Currency from "react-currency-formatter";
 import ColorPicker from "../Tools/ColorPicker";
 
 export default class Stock extends React.Component {

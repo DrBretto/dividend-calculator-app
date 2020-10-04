@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { Section } from "../utils/utils";
 
 export default class NotFoundPage extends Component {

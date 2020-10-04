@@ -1,12 +1,13 @@
 import React from "react";
-import App from "./App";
 import { mount, configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import { MemoryRouter } from "react-router";
+import Adapter from "enzyme-adapter-react-16";
+
 import NavWindow from "./NavWindow";
 import MainWindow from "./MainWindow";
 import DetailsWindow from "./DetailsWindow";
 import NotFoundPage from "./NotFoundPage";
+import App from "./App";
 import Footer from "./Footer";
 
 configure({ adapter: new Adapter() });

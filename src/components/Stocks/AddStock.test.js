@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import AddStock from "./AddStock";
 
 it("renders without crashing", () => {

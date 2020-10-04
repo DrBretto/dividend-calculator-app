@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import AddStrategy from "./AddStrategy";
 
 it("renders without crashing", () => {

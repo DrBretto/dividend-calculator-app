@@ -1,16 +1,16 @@
 /* eslint-disable no-useless-escape */
+
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+
 import ApiContext from "../../contexts/ApiContext";
 import config from "../../config";
 import Form from "../Tools/Form";
 import TokenService from "../../services/token-service";
 import ColorPicker from "../Tools/ColorPicker";
 import color from "../../utils/color";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import FormValidator from "../Tools/FormValidator";
-
-//TODO -- better inputs, no duplicates
 
 export default class AddStock extends Component {
   constructor(props) {

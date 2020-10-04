@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import LoginForm from "../components/Login/LoginForm";
 import { Section } from "../utils/utils";
 import ApiContext from "../contexts/ApiContext";
-import { Link } from "react-router-dom";
 
 export default class LoginPage extends Component {
   static defaultProps = {

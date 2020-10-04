@@ -30,12 +30,10 @@ const data = {
     let str = [];
     let industries = [];
 
-    //extract industries to array of strings
     for (let i = 0; i < stocks.length; i++) {
       str[i] = stocks[i].industry;
     }
 
-    //count each industry
     str.sort();
     for (let i = 0; i < str.length; i++) {
       if (str[i] !== prev) {
@@ -47,7 +45,6 @@ const data = {
       prev = str[i];
     }
 
-    //repack object
     for (let i = 0; i < count.length; i++) {
       industries[i] = {
         name: industry[i],

@@ -1,9 +1,10 @@
-import RegistrationForm from "../components/Login/RegistrationForm";
 import React from "react";
-import App from "./App";
+import { MemoryRouter } from "react-router";
 import { mount, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { MemoryRouter } from "react-router";
+
+import App from "./App";
+import RegistrationForm from "../components/Login/RegistrationForm";
 
 configure({ adapter: new Adapter() });
 test("renders login page, but not registration page", () => {
